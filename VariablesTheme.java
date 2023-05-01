@@ -1,14 +1,14 @@
-public class VariablesTheme{
+public class VariablesTheme {
 
     public static void main(String[] args) {
-        System.out.println("1. Вывод характеристик компьютера");
+        System.out.println("1. Вывод характеристик компьютера : ");
         byte core = 3; 
-        short logical_proccesor = 6;
-        int system_type = 64; 
+        short logicalCpu = 6;
+        int systemType = 64; 
         long ram = 8_000_000L; 
-        float processor_speed = 3.3f; 
-        double core_speed_accurate = 1406.19; 
-        char all_rights_reserved = '#'; 
+        float cpuSpeed = 3.3f; 
+        double coreSpeedAccurate = 1406.19; 
+        char allRightsReserved = '#'; 
         boolean windowsActive;
         
         String os = System.getProperty("os.name").toLowerCase();
@@ -19,26 +19,27 @@ public class VariablesTheme{
             windowsActive = false;
         }
 
-        System.out.printf("ядер: %d", core);
-        System.out.printf("\nлогических процессов: %d", logical_proccesor);
-        System.out.printf("\n%d-битная разрядная операционная система", system_type);
-        System.out.printf("\n8 гб оперативной памяти( в десятичной %d KB)", ram);
-        System.out.printf("\nтактовая частота процессора %.2f", processor_speed);
-        System.out.printf("\nтактовая частота процессора сейчас %.2f", core_speed_accurate);
-        System.out.printf("\nНа компьютере windows 7? %b", windowsActive);
-        System.out.printf("\n%s Корпорация Майкрософт\n" , all_rights_reserved);
+        System.out.println("ядер:" + core);
+        System.out.println("логических процессов: " + logicalCpu);
+        System.out.println(systemType + "-битная разрядная операционная система");
+        System.out.println("8 гб оперативной памяти( в десятичной " + ram + " KB)");
+        System.out.println("тактовая частота процессора " + cpuSpeed);
+        System.out.println("тактовая частота процессора сейчас " + coreSpeedAccurate);
+        System.out.println("На компьютере windows 7? " + windowsActive);
+        System.out.println(allRightsReserved + " Корпорация Майкрософт");
         
-        System.out.println("\n2. Расчет стоимости товара со скидкой");
-        int pen = 100;
-        int book = 200;
+        System.out.println("\n2. Расчет стоимости товара со скидкой :");
+        int pricePen = 100;
+        int priceBook = 200;
         int discount = 11;
-        int sumGoods = pen + book;
-        int sumDiscounts = ((pen + book) / 100 ) * discount;
-        int sumGoodsDiscounts = sumGoods - ((pen + book) / 100 ) * discount;
+        int discountFull = 100;
+        int sumGoods = pricePen + priceBook;
+        int discountSum = ((pricePen + priceBook) / discountFull ) * discount;
+        int discountPrice = sumGoods - discountSum * discount;
 
-        System.out.printf("\nобщую стоимость товаров без скидки: %d руб", sumGoods);
-        System.out.printf("\nсумму скидки : %d руб", sumDiscounts);
-        System.out.printf("\nобщую стоимость товаров со скидкой : %d руб", sumGoodsDiscounts);
+        System.out.println("\nобщую стоимость товаров без скидки: " + sumGoods +" руб");
+        System.out.println("сумму скидки : " + discountSum + " руб");
+        System.out.println("общую стоимость товаров со скидкой : " + discountPrice + " руб");
 
         System.out.println("\n3.Вывод слова JAVA");
         System.out.println("   J    a  v     v  a     \n" +
@@ -47,26 +48,28 @@ public class VariablesTheme{
                            " JJ  a     a  V  a     a ");
 
         System.out.println("\n4.Вывод min и max значений целых числовых типов");
-        byte  max1 = 127;
-        short max2 = 32_767;
-        int   max3 = 2_147_483_647;
-        long  max4 = 2  ^ 63 - 1;
+        byte  maxByte = 127;
+        short maxShort = 32_767;
+        int   maxInt = 2_147_483_647;
+        long  maxLong = 2  ^ 63 - 1;
 
-        System.out.printf("\n первоначальное значение byte : %d" , max1 );
-        System.out.printf("\n значение после инкремента на единицу byte : %d" , max1++ );
-        System.out.printf("\n значение после декремента на единицу : %d\n" , max1--);
+        System.out.printf("\n первоначальное значение byte : %d" , maxByte);
+        maxByte++;
+        System.out.printf("\n значение после инкремента на единицу byte : %d" , maxByte);
+        maxByte--;
+        System.out.printf("\n значение после декремента на единицу : %d\n" , maxByte);
 
-        System.out.printf("\n первоначальное значение short : %d" , max2 );
-        System.out.printf("\n значение после инкремента на единицу short : %d" , max2++ );
-        System.out.printf("\n значение после декремента на единицу short: %d\n" , max2-- );
+        System.out.printf("\n первоначальное значение short : %d" , maxShort);
+        System.out.printf("\n значение после инкремента на единицу short : %d" , maxShort++);
+        System.out.printf("\n значение после декремента на единицу short: %d\n" , maxShort--);
 
-        System.out.printf("\n первоначальное значение int : %d" , max3 );
-        System.out.printf("\n значение после инкремента на единицу int : %d" , max3++ );
-        System.out.printf("\n значение после декремента на единицу int: %d\n" , max3-- );
+        System.out.printf("\n первоначальное значение int : %d" , maxInt);
+        System.out.printf("\n значение после инкремента на единицу int : %d" , maxInt++);
+        System.out.printf("\n значение после декремента на единицу int: %d\n" , maxInt--);
 
-        System.out.printf("\n первоначальное значение long : %d" , max4 );
-        System.out.printf("\n значение после инкремента на единицу long : %d" , max4++ );
-        System.out.printf("\n значение после декремента на единицу long: %d\n" , max4-- );
+        System.out.printf("\n первоначальное значение long : %d" , maxLong);
+        System.out.printf("\n значение после инкремента на единицу long : %d" , maxLong++);
+        System.out.printf("\n значение после декремента на единицу long: %d\n" , maxLong--);
 
         System.out.println("\n5.Перестановка значений переменных");
         int value1 = 2;
