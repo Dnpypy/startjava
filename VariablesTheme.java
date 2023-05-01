@@ -118,20 +118,18 @@ public class VariablesTheme {
 
         System.out.println("\n7.Вывод в консоль ASCII-арт Дюка");
 
-        String slash = "/";
-        String backslash = "\\";
-        String underscoreX1 = "_";
-        String leftParenthesis = "(";
-        String rightParenthesis = ")";
-        String underscoreX4 = "____";
-        String underscoreX2 = "__";
- 
-        System.out.println("    " + slash + backslash + "    \n" +
-                          "   "  + slash + "  " + backslash + "   \n" +
-                          "  "   + slash + underscoreX1 + leftParenthesis + " " + rightParenthesis + backslash + "  \n" +
-                          " "    + slash + "      " + backslash + "\n" +
-                         slash + underscoreX4 + slash + backslash + underscoreX2 + backslash);
+        char slash = '/';
+        char backslash = '\\';
+        char underscoreX1 = '_';
+        char leftBracket = '(';
+        char space = ' ';
+        char rightBracket = ')';
 
+        System.out.println("    " + slash + backslash + "\n" +
+                           "   "  + slash + "  " + backslash + "\n" +
+                           "  "   + slash + underscoreX1 + leftBracket + space + rightBracket + backslash + "\n" +
+                           " "    + slash + space + space + space + space + space + space + backslash);
+ 
        System.out.println("\n8.Вывод количества сотен, десятков и единиц числа");
        int number = 123;
        int hundred = number / 100;
