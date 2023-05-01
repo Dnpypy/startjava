@@ -54,108 +54,89 @@ public class VariablesTheme {
         long  maxLong = 2  ^ 63 - 1;
 
         System.out.printf("\n первоначальное значение byte : %d" , maxByte);
-        maxByte++;
-        System.out.printf("\n значение после инкремента на единицу byte : %d" , maxByte);
-        maxByte--;
-        System.out.printf("\n значение после декремента на единицу : %d\n" , maxByte);
+        System.out.printf("\n значение после инкремента на единицу byte : %d" , maxByte + 1);
+        System.out.printf("\n значение после декремента на единицу : %d\n" , (byte)maxByte - 1);
 
         System.out.printf("\n первоначальное значение short : %d" , maxShort);
-        System.out.printf("\n значение после инкремента на единицу short : %d" , maxShort++);
-        System.out.printf("\n значение после декремента на единицу short: %d\n" , maxShort--);
+        System.out.printf("\n значение после инкремента на единицу short : %d" , maxShort + 1);
+        System.out.printf("\n значение после декремента на единицу short: %d\n" ,(short) maxShort - 1);
 
         System.out.printf("\n первоначальное значение int : %d" , maxInt);
-        System.out.printf("\n значение после инкремента на единицу int : %d" , maxInt++);
-        System.out.printf("\n значение после декремента на единицу int: %d\n" , maxInt--);
+        System.out.printf("\n значение после инкремента на единицу int : %d" , maxInt + 1);
+        System.out.printf("\n значение после декремента на единицу int: %d\n" , (int) maxInt - 1);
 
         System.out.printf("\n первоначальное значение long : %d" , maxLong);
-        System.out.printf("\n значение после инкремента на единицу long : %d" , maxLong++);
-        System.out.printf("\n значение после декремента на единицу long: %d\n" , maxLong--);
+        System.out.printf("\n значение после инкремента на единицу long : %d" , maxLong + 1);
+        System.out.printf("\n значение после декремента на единицу long: %d\n" , (int)maxLong - 1);
 
         System.out.println("\n5.Перестановка значений переменных");
-        int value1 = 2;
-        int value2 = 5;
-        int value3;
-        System.out.println("с помощью третьей переменной :");
-        System.out.println("исходные значения переменных");
-        System.out.println(value1);
-        System.out.println(value2);
+        int a = 2;
+        int b = 5;
+        int temp;
+        System.out.println("с помощью третьей переменной :" + "\n" + "исходные значения переменных");
+        System.out.println(a + "\n" + b);
 
-        value3 = value1;
-        value1 = value2;
-        value2 = value3;
+        temp = a;
+        a = b;
+        b = temp;
 
         System.out.println("новые значения переменных");
-        System.out.println(value1);
-        System.out.println(value2);
+        System.out.println(a + "\n" + b);
 
-        System.out.println("\nс помощью арифметических операций");
-        System.out.println("исходные значения переменных");
-        System.out.println(value1);
-        System.out.println(value2);
+        System.out.println("\nс помощью арифметических операций" + "\n" + "исходные значения переменных");
+        System.out.println(a + "\n" + b);
 
         int value4 = 3;
-        value1 -= value4;
-        value2 += value4;
+        a -= value4;
+        b += value4;
 
         System.out.println("новые значения переменных");
-        System.out.println(value1);
-        System.out.println(value2);
+        System.out.println(a + "\n" + b);
 
-        System.out.println("\nс помощью побитовой операции ^ :");
-        System.out.println("исходные значения переменных");
-        System.out.println(value1);
-        System.out.println(value2);
+        System.out.println("\nс помощью побитовой операции ^ :" + "\n" + "исходные значения переменных");
+        System.out.println(a + "\n" + b);
 
-        value1 = value1 ^ value2 ^ (value2 = value1);
+        a ^= b;
+        b ^= a;
+        a ^= b;
 
         System.out.println("новые значения переменных");
-        System.out.println(value1);
-        System.out.println(value2);
+        System.out.println(a + "\n" + b);
 
         System.out.println("\n6.Вывод символов и их кодов");
-        char symbol1 = '#';
-        char symbol2 = '&';
-        char symbol3 = '@';
-        char symbol4 = '^';    
-        char symbol5 = '_'; 
+        char numberSign = '#';
+        char ampersand = '&';
+        char atSign = '@';
+        char caret = '^';
+        char underscore = '_'; 
 
-        System.out.print((int)symbol1);
-        System.out.print(" ");
-        System.out.println (symbol1);
-        System.out.print((int)symbol2);
-        System.out.print(" ");
-        System.out.println (symbol2);
-        System.out.print((int)symbol3);
-        System.out.print(" ");
-        System.out.println (symbol3);
-        System.out.print((int)symbol4);
-        System.out.print(" ");
-        System.out.println (symbol4);
-        System.out.print((int)symbol5);
-        System.out.print(" ");
-        System.out.println (symbol5);
+        System.out.println((int) numberSign + " " + numberSign);
+        System.out.println((int) ampersand + " " + ampersand);
+        System.out.println((int) atSign + " " + atSign);
+        System.out.println((int) caret + " " + caret);
+        System.out.println((int)  underscore + " " +  underscore);
 
         System.out.println("\n7.Вывод в консоль ASCII-арт Дюка");
-        
-        String symbol6 = "/";
-        String symbol7 = "\\";
-        String symbol8 = "_";
-        String symbol9 = "(";
-        String symbol10 = ")";
-        String symbol11 = "____";
-        String symbol12 = "__";
 
-       System.out.println("    " + symbol6 + symbol7 + "    \n" +
-                          "   "  + symbol6 + "  " + symbol7 + "   \n" +
-                          "  "   + symbol6 + symbol8 + symbol9 + " " + symbol10 + symbol7 + "  \n" +
-                          " "    + symbol6 + "      " + symbol7 + "\n" +
-                         symbol6 + symbol11 + symbol6 + symbol7 + symbol12 + symbol7);
+        String slash = "/";
+        String backslash = "\\";
+        String underscoreX1 = "_";
+        String leftParenthesis = "(";
+        String rightParenthesis = ")";
+        String underscoreX4 = "____";
+        String underscoreX2 = "__";
+ 
+        System.out.println("    " + slash + backslash + "    \n" +
+                          "   "  + slash + "  " + backslash + "   \n" +
+                          "  "   + slash + underscoreX1 + leftParenthesis + " " + rightParenthesis + backslash + "  \n" +
+                          " "    + slash + "      " + backslash + "\n" +
+                         slash + underscoreX4 + slash + backslash + underscoreX2 + backslash);
 
        System.out.println("\n8.Вывод количества сотен, десятков и единиц числа");
        int number = 123;
-       int hundred = 123 / 100;
-       int dozens = 123 / 10 % 10;
-       int unit = 123 % 10;
+       int hundred = number / 100;
+       int dozens = number / 10 % 10;
+       int unit = number % 10;
 
        System.out.printf("Число %d содержит :\n", number);
        System.out.printf("%d сотен\n", hundred);
@@ -170,9 +151,9 @@ public class VariablesTheme {
 
        System.out.println("\n9.Вывод времени");
        int time = 86399;
-       int hour = (time %((60 * 60 * 24)) / 60 / 60);
+       int hour = ((time % 86400) / 60 / 60);
        int minute = time / 60 % 60;
-       int seconds =(time % (60*60)) % 60;
+       int seconds =(time % 3600) % 60;
 
        System.out.printf("%02d" + ":" + "%02d" + ":" + "%02d", hour, minute, seconds);
     }
