@@ -32,10 +32,9 @@ public class VariablesTheme {
         int pricePen = 100;
         int priceBook = 200;
         int discount = 11;
-        int discountFull = 100;
         int sumGoods = pricePen + priceBook;
-        int discountSum = ((pricePen + priceBook) / discountFull ) * discount;
-        int discountPrice = sumGoods - discountSum * discount;
+        int discountSum = ((pricePen + priceBook) / 100 ) * discount; 
+        int discountPrice = sumGoods - discountSum;
 
         System.out.println("\nобщую стоимость товаров без скидки: " + sumGoods +" руб");
         System.out.println("сумму скидки : " + discountSum + " руб");
@@ -48,35 +47,42 @@ public class VariablesTheme {
                            " JJ  a     a  V  a     a ");
 
         System.out.println("\n4.Вывод min и max значений целых числовых типов");
-        byte  maxByte = 127;
+        byte maxByte = 127;
         short maxShort = 32_767;
-        int   maxInt = 2_147_483_647;
-        long  maxLong = 2  ^ 63 - 1;
+        int maxInt = 2_147_483_647;
+        long maxLong = 2  ^ 63 - 1;
 
-        System.out.printf("\n первоначальное значение byte : %d" , maxByte);
-        System.out.printf("\n значение после инкремента на единицу byte : %d" , maxByte + 1);
-        System.out.printf("\n значение после декремента на единицу : %d\n" , (byte)maxByte - 1);
+        System.out.println("первоначальное значение byte : " + maxByte);
+        maxByte = ++maxByte;
+        System.out.println("значение после инкремента на единицу byte : " + maxByte);
+        maxByte = --maxByte;
+        System.out.println("значение после декремента на единицу byte: " + maxByte);
 
-        System.out.printf("\n первоначальное значение short : %d" , maxShort);
-        System.out.printf("\n значение после инкремента на единицу short : %d" , maxShort + 1);
-        System.out.printf("\n значение после декремента на единицу short: %d\n" ,(short) maxShort - 1);
+        System.out.println("\nпервоначальное значение short : " + maxShort);
+        maxShort = ++maxShort;
+        System.out.println("значение после инкремента на единицу short : " + maxShort);
+        maxShort = --maxShort;
+        System.out.println("значение после декремента на единицу short : " + maxShort);
 
-        System.out.printf("\n первоначальное значение int : %d" , maxInt);
-        System.out.printf("\n значение после инкремента на единицу int : %d" , maxInt + 1);
-        System.out.printf("\n значение после декремента на единицу int: %d\n" , (int) maxInt - 1);
+        System.out.println("\nпервоначальное значение int : " + maxInt);
+        maxInt = ++maxInt;
+        System.out.println("значение после инкремента на единицу int : " + maxInt);
+        maxInt = --maxInt;
+        System.out.println("значение после декремента на единицу int : " + --maxInt);
 
-        System.out.printf("\n первоначальное значение long : %d" , maxLong);
-        System.out.printf("\n значение после инкремента на единицу long : %d" , maxLong + 1);
-        System.out.printf("\n значение после декремента на единицу long: %d\n" , (int)maxLong - 1);
+        System.out.println("\nпервоначальное значение long : " + maxLong);
+        maxLong = ++maxLong;
+        System.out.println("значение после инкремента на единицу long : " + ++maxLong);
+        maxLong = --maxLong;
+        System.out.println("значение после декремента на единицу long : " + --maxLong);
 
         System.out.println("\n5.Перестановка значений переменных");
         int a = 2;
         int b = 5;
-        int temp;
         System.out.println("с помощью третьей переменной :" + "\n" + "исходные значения переменных");
         System.out.println(a + "\n" + b);
 
-        temp = a;
+        int temp = a;
         a = b;
         b = temp;
 
@@ -86,9 +92,9 @@ public class VariablesTheme {
         System.out.println("\nс помощью арифметических операций" + "\n" + "исходные значения переменных");
         System.out.println(a + "\n" + b);
 
-        int value4 = 3;
-        a -= value4;
-        b += value4;
+        a = a + b; 
+        b = a - b; 
+        a = a - b; 
 
         System.out.println("новые значения переменных");
         System.out.println(a + "\n" + b);
@@ -122,36 +128,32 @@ public class VariablesTheme {
         char backslash = '\\';
         char underscoreX1 = '_';
         char leftBracket = '(';
-        char space = ' ';
         char rightBracket = ')';
 
         System.out.println("    " + slash + backslash + "\n" +
                            "   "  + slash + "  " + backslash + "\n" +
-                           "  "   + slash + underscoreX1 + leftBracket + space + rightBracket + backslash + "\n" +
-                           " "    + slash + space + space + space + space + space + space + backslash);
+                           "  "   + slash + underscoreX1 + leftBracket + " " + rightBracket + backslash + "\n" +
+                           " "    + slash + " " + " " + " " + " " + " " + " " + backslash);
  
        System.out.println("\n8.Вывод количества сотен, десятков и единиц числа");
        int number = 123;
        int hundred = number / 100;
-       int dozens = number / 10 % 10;
-       int unit = number % 10;
+       int tens = number / 10 % 10;
+       int ones = number % 10;
 
-       System.out.printf("Число %d содержит :\n", number);
-       System.out.printf("%d сотен\n", hundred);
-       System.out.printf("%d десятков\n",dozens);
-       System.out.printf("%d единиц\n",unit);
-
-       System.out.print("Сумма его цифр: ");
-       System.out.println(hundred + dozens + unit);
-
-       System.out.print("Произведение : ");
-       System.out.println(hundred * dozens * unit);
+       System.out.println("Число " + number + " содержит : " + "\n" +  
+                        "сотен : " + hundred + "\n" +
+                        "десятков : " + tens + "\n" +
+                        "единиц : "  + ones);
+       
+       System.out.println("Сумма его цифр: " + (hundred + tens + ones));
+       System.out.println("Произведение : " + (hundred * tens * ones));
 
        System.out.println("\n9.Вывод времени");
        int time = 86399;
-       int hour = ((time % 86400) / 60 / 60);
+       int hour = time / 3600;
        int minute = time / 60 % 60;
-       int seconds =(time % 3600) % 60;
+       int seconds = time % 60;
 
        System.out.printf("%02d" + ":" + "%02d" + ":" + "%02d", hour, minute, seconds);
     }
