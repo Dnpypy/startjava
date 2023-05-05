@@ -33,7 +33,7 @@ public class VariablesTheme {
         int priceBook = 200;
         int discount = 11;
         int sumGoods = pricePen + priceBook;
-        int discountSum = ((pricePen + priceBook) / 100 ) * discount; 
+        int discountSum = (sumGoods / 100) * discount; 
         int discountPrice = sumGoods - discountSum;
 
         System.out.println("\nобщую стоимость товаров без скидки: " + sumGoods +" руб");
@@ -53,27 +53,19 @@ public class VariablesTheme {
         long maxLong = 2  ^ 63 - 1;
 
         System.out.println("первоначальное значение byte : " + maxByte);
-        maxByte = ++maxByte;
-        System.out.println("значение после инкремента на единицу byte : " + maxByte);
-        maxByte = --maxByte;
-        System.out.println("значение после декремента на единицу byte: " + maxByte);
+        System.out.println("значение после инкремента на единицу byte : " + ++maxByte);
+        System.out.println("значение после декремента на единицу byte: " + --maxByte);
 
         System.out.println("\nпервоначальное значение short : " + maxShort);
-        maxShort = ++maxShort;
-        System.out.println("значение после инкремента на единицу short : " + maxShort);
-        maxShort = --maxShort;
-        System.out.println("значение после декремента на единицу short : " + maxShort);
+        System.out.println("значение после инкремента на единицу short : " + ++maxShort);
+        System.out.println("значение после декремента на единицу short : " + --maxShort);
 
         System.out.println("\nпервоначальное значение int : " + maxInt);
-        maxInt = ++maxInt;
-        System.out.println("значение после инкремента на единицу int : " + maxInt);
-        maxInt = --maxInt;
+        System.out.println("значение после инкремента на единицу int : " + ++maxInt);
         System.out.println("значение после декремента на единицу int : " + --maxInt);
 
         System.out.println("\nпервоначальное значение long : " + maxLong);
-        maxLong = ++maxLong;
         System.out.println("значение после инкремента на единицу long : " + ++maxLong);
-        maxLong = --maxLong;
         System.out.println("значение после декремента на единицу long : " + --maxLong);
 
         System.out.println("\n5.Перестановка значений переменных");
@@ -92,9 +84,9 @@ public class VariablesTheme {
         System.out.println("\nс помощью арифметических операций" + "\n" + "исходные значения переменных");
         System.out.println(a + "\n" + b);
 
-        a = a + b; 
+        a += b; 
         b = a - b; 
-        a = a - b; 
+        a -= b; 
 
         System.out.println("новые значения переменных");
         System.out.println(a + "\n" + b);
@@ -131,20 +123,20 @@ public class VariablesTheme {
         char rightBracket = ')';
 
         System.out.println("    " + slash + backslash + "\n" +
-                           "   "  + slash + "  " + backslash + "\n" +
-                           "  "   + slash + underscoreX1 + leftBracket + " " + rightBracket + backslash + "\n" +
-                           " "    + slash + " " + " " + " " + " " + " " + " " + backslash);
+                "   "  + slash + "  " + backslash + "\n" +
+                "  "   + slash + underscoreX1 + leftBracket + " " + rightBracket + backslash + "\n" +
+                " "    + slash + "      " + backslash);
  
-       System.out.println("\n8.Вывод количества сотен, десятков и единиц числа");
-       int number = 123;
-       int hundred = number / 100;
-       int tens = number / 10 % 10;
-       int ones = number % 10;
+        System.out.println("\n8.Вывод количества сотен, десятков и единиц числа");
+        int number = 123;
+        int hundred = number / 100;
+        int tens = number / 10 % 10;
+        int ones = number % 10;
 
-       System.out.println("Число " + number + " содержит : " + "\n" +  
-                        "сотен : " + hundred + "\n" +
-                        "десятков : " + tens + "\n" +
-                        "единиц : "  + ones);
+        System.out.println("Число " + number + " содержит : " + "\n" +  
+                "сотен : " + hundred + "\n" +
+                "десятков : " + tens + "\n" +
+                "единиц : "  + ones);
        
        System.out.println("Сумма его цифр: " + (hundred + tens + ones));
        System.out.println("Произведение : " + (hundred * tens * ones));
