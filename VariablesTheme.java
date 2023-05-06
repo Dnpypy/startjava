@@ -123,9 +123,9 @@ public class VariablesTheme {
         char rightBracket = ')';
 
         System.out.println("    " + slash + backslash + "\n" +
-                "   "  + slash + "  " + backslash + "\n" +
-                "  "   + slash + underscoreX1 + leftBracket + " " + rightBracket + backslash + "\n" +
-                " "    + slash + "      " + backslash);
+                "   " + slash + "  " + backslash + "\n" +
+                "  " + slash + underscoreX1 + leftBracket + " " + rightBracket + backslash + "\n" +
+                " " + slash + "      " + backslash);
  
         System.out.println("\n8.Вывод количества сотен, десятков и единиц числа");
         int number = 123;
