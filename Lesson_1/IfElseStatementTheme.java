@@ -216,11 +216,10 @@ public class IfElseStatementTheme {
         System.out.println("Средний % по предметам : " + ((historyProcent + programmingProcent) / 2));
 
         System.out.println("\n8.Расчет прибыли за год : ");
-        int roomPrice = 5000; // продавец снимает помещение за 
-        int averageProduct = 13000; // в среднем в месяц он продает товара
-        int costPrice = 9000; //себестоимость  
+        int roomPrice = 5000; 
+        int averageProduct = 13000; 
+        int costPrice = 9000; 
 
-        // подсчитайте годовую прибыль
         int annualProfit = ((averageProduct * 12) - ((costPrice * 12) + (5000 * 12)));
         System.out.println("Прибыль за год : " + annualProfit);
 
