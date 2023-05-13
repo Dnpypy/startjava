@@ -13,8 +13,9 @@ public class IfElseStatementTheme {
             System.out.println("Возраст меньше 20");    
         }
 
-        boolean isGenderMale = gender == "male" ? true : false;
-        if (!isGenderMale) {
+        boolean isMaleGender = gender == "male";
+
+        if (!isMaleGender) {
             System.out.println("Пол женский");
         } else {
             System.out.println("Пол мужской");
@@ -36,149 +37,113 @@ public class IfElseStatementTheme {
         }
 
         System.out.println("\n2.Поиск max и min числа : ");
-        int a = 26;
-        int b = 245;
-        int min, max, temp;
+        int a = 44;
+        int b = 260;
 
         if (a > b) {
-            max = a;
-            min = b;     
             System.out.println("Максимальное число a : " + a + "\n" + "Минимальное число b : " + b);
         } else if (b > a) {
-            max = b;
-            min = a;
             System.out.println("Максимальное число b : " + b + "\n" + "Минимальное число a : " + a);
         } else {
             System.out.println("Числа a и b равны!");
         }
 
-        temp = a;
-        a = b;
-        b = temp;
-
-        if (a > b) {
-            max = a;
-            min = b;     
-            System.out.println("Максимальное число a : " + a + "\n" + "Минимальное число b : " + b);
-        } else if (b > a) {
-            max = b;
-            min = a;
-            System.out.println("Максимальное число : b " + b + "\n" + "Минимальное число a : " + a);
-        } else {
-            System.out.println("Числа a и b равны!");
-        }
-
-        a = b;
-
-        if (a > b) {
-            max = a;
-            min = b;     
-            System.out.println("Максимальное число a : " + a + "\n" + "Минимальное число b : " + b);
-        } else if (b > a) {
-            max = b;
-            min = a;
-            System.out.println("Максимальное число : b " + b + "\n" + "Минимальное число a : " + a);
-        } else {
-            System.out.println("Числа a и b равны!");
-        }
 
         System.out.println("\n3.Проверка числа : ");
-        int value = -11;
+        int checkValue = -23;
 
-        if (!(value == 0)) {
-            if (value % 2 == 0) {
-                System.out.println("Число : " + value + " четное");
-            } else {
-                System.out.println("Число : " + value + " нечетное");
-            }
+        if (checkValue == 0) {
+                System.out.println("Число : " + checkValue + " равно нулю");
+        } else {
+            if (checkValue != 0) {
+                if (checkValue % 2 == 0) {
+                    System.out.println("Число : " + checkValue + " четное");
+                } else {
+                    System.out.println("Число : " + checkValue + " нечетное");
+                }
 
-            if (value > 0) {
-                System.out.println("Число : " + value + " положительное");
-            } else {
-                System.out.println("Число : " + value + " отрицательное");
+                if (checkValue > 0) {
+                    System.out.println("Число : " + checkValue + " положительное");
+                } else {
+                    System.out.println("Число : " + checkValue + " отрицательное");
+                }
             }
+            
         }
 
         System.out.println("\n4.Поиск одинаковых цифр в числах : ");
-        int num1 = -525;
-        int num2 = -522;
-        num1 = Math.abs(num1);
-        num2 = Math.abs(num2);
-
+        int num1 = 444;
+        int num2 = 444;
+        
         System.out.println("Исходное число num1 : " + num1);
         System.out.println("Исходное число num2 : " + num2);
 
-        int n1 = num1 / 100;
-        int n2 = num1 / 10 % 10;
-        int n3 = num1 % 10;
+        int hundreds1 = num1 / 100;
+        int ten1 = num1 / 10 % 10;
+        int one1 = num1 % 10;
 
-        System.out.println("");
-
-        int n4 = num2 / 100;
-        int n5 = num2 / 10 % 10;
-        int n6 = num2 % 10;
+        int hundreds2 = num2 / 100;
+        int ten2 = num2 / 10 % 10;
+        int one2 = num2 % 10;
         
-        if (((num1 & num2) > 99 || ((num1 & num2) < 1000))) {
-            if (n1 != n4 && n2 != n5 && n3 != n6) {
-                System.out.println("Равных цифр нет!");
-            } else {
-                if (n1 == n4) {
-                    System.out.println("В числах " + num1 + " " + num2 + " одинаковое число : " + n1);
-                    System.out.println("Цифра " + n1 + " находится в третьем разряде сотен");
-                } 
-                if (n2 == n5) {
-                    System.out.println("В числах " + num1 + " " + num2 + " одинаковое число : " + n2);
-                    System.out.println("Цифра " + n2 + " находится в втором разряде десятков");
-                } 
-                if (n3 == n6) {
-                    System.out.println("В числах " + num1 + " " + num2 + " одинаковое число : " + n3);
-                    System.out.println("Цифра " + n3 + " находится в первом разряде единиц");
-                }
+        if (hundreds1 != hundreds2 && ten1 != ten2 && one1 != one2) {
+            System.out.println("Равных цифр нет!");
+        } else {
+            if (hundreds1 == hundreds2) {
+                System.out.println("В числах " + num1 + " " + num2 + " одинаковое число : " + hundreds1);
+                System.out.println("Цифра " + hundreds1 + " находится в третьем разряде сотен");
+            } 
+            if (ten1 == ten2) {
+                System.out.println("В числах " + num1 + " " + num2 + " одинаковое число : " + ten1);
+                System.out.println("Цифра " + ten1 + " находится в втором разряде десятков");
+            } 
+            if (one1 == one2) {
+                System.out.println("В числах " + num1 + " " + num2 + " одинаковое число : " + one1);
+                System.out.println("Цифра " + one1 + " находится в первом разряде единиц");
             }
         }
+        
 
         System.out.println("\n5.Определение символа по его коду : ");
         char chValue = '\u0057';
         int iChar = (int) chValue;
         int iChar2 = 0;
 
-        if (chValue != 'w') {
+        if (chValue >= 'A' && chValue <= 'Z') {  
             iChar2 += iChar + 32;
-            System.out.println("Символ : " + chValue + " маленькая буква : " + (char)iChar2);
+            System.out.println("Символ : " + chValue + " маленькая буква : " + (char)iChar2 + "\n" +
+             "код числа совпадает : " + iChar);
+        } else {
+            if (!(chValue >= 'A' && chValue <= 'z') && !(chValue >= '0' && chValue <= '9')) {
+                System.out.println("Символ " + chValue);
+                System.out.println("Не буква и не число");
+            }
+            
         }
-        if (chValue == '\u0057') {
-            System.out.println("Символ " + chValue);
-        }
-        if (chValue == 'W') {
-            System.out.println("Символ : " + chValue + " код числа совпадает : " + iChar);
-        }
-        if (!(chValue >= 'A' && chValue <= 'z') || !(chValue >= '0' && chValue <= '9')) {
-            System.out.println("Не буква и не число");
-        }
-        
+
         System.out.println("\n6.Подсчет суммы вклада и начисленных банком % : ");
-        int depositAmount = 300_000;
-        int sumBorder1 = 100_000;
-        int sumBorder2 = 300_000;
+        int depositAmount = 300_000; // сумма вклада
+        int sumBorder1 = 100_000; // граница вклада 1
+        int sumBorder2 = 300_000; // граница вклада 2
 
-        double procent1 = 5.0;
-        double procent2 = 7.0;
-        double procent3 = 10.0;
+        double percent1 = 5.0;
+        double percent2 = 7.0;
+        double percent3 = 10.0;
 
-        double podschet = 0.0;
+        double percentPlus = 0.0;  
     
         if (depositAmount < sumBorder1) {
-            podschet = depositAmount * procent1 / 100;
+            percentPlus = depositAmount * percent1 / 100;
         } else if (depositAmount >= sumBorder1 && depositAmount < sumBorder1) {
-            podschet = depositAmount * procent2 / 100;
+            percentPlus = depositAmount * percent2 / 100;
         } else if (depositAmount >= sumBorder2) {
-            podschet = depositAmount * procent3 / 100;    
+            percentPlus = depositAmount * percent3 / 100;    
         }
 
-        double allSum = depositAmount + podschet;
+        double sumPercentTotal = depositAmount + percentPlus; 
 
-        System.out.println("Сумма вклада : " + depositAmount + "\nНачисленный процент : " + podschet + 
-                            "\nИтоговая сумма с % : " + allSum);
+        System.out.println("Сумма вклада : " + depositAmount + "\nНачисленный процент : " + percentPlus + 
+                            "\nИтоговая сумма с % : " + sumPercentTotal);
 
         System.out.println("\n7.Определение оценки по предметам : ");
         double historyProcent = 59;
