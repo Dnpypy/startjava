@@ -48,7 +48,6 @@ public class IfElseStatementTheme {
             System.out.println("Числа a и b равны!");
         }
 
-
         System.out.println("\n3.Проверка числа : ");
         int checkValue = -23;
 
@@ -103,7 +102,6 @@ public class IfElseStatementTheme {
             }
         }
         
-
         System.out.println("\n5.Определение символа по его коду : ");
         char chValue = '\u0057';
         int iChar = (int) chValue;
