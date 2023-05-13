@@ -106,15 +106,16 @@ public class IfElseStatementTheme {
         char chValue = '\u0057';
         int iChar = (int) chValue;
         int iChar2 = 0;
-
+        
         if (chValue >= 'A' && chValue <= 'Z') {  
             iChar2 += iChar + 32;
-            System.out.println("Символ : " + chValue + " маленькая буква : " + (char)iChar2 + "\n" +
-             "код числа совпадает : " + iChar);
-        } else {
+            System.out.println("Символ : " + chValue + "\nМаленькая буква : " + 
+            (char)iChar2 + "\nБольшая буква : " + chValue);
+        } else if (chValue >= '0' && chValue <= '9') {
+            System.out.println("Число : " + chValue);
+        }  else {
             if (!(chValue >= 'A' && chValue <= 'z') && !(chValue >= '0' && chValue <= '9')) {
-                System.out.println("Символ " + chValue);
-                System.out.println("Не буква и не число");
+                System.out.println("Символ " + chValue + "\nНе буква и не число");
             }
             
         }
