@@ -142,47 +142,50 @@ public class IfElseStatementTheme {
                             "\nИтоговая сумма с % : " + sumPercentTotal);
 
         System.out.println("\n7.Определение оценки по предметам : ");
-        double historyProcent = 59;
-        double programmingProcent = 91;
-        int grade1 = 0;
-        int grade2 = 0;
-        int borderProcent1 = 60;
-        int borderProcent2 = 73;
-        int borderProcent3 = 91;
+        double historyPercent = 59;
+        double programmingPercent = 91;
+        int borderPercent60 = 60;
+        int borderPercent73 = 73;
+        int borderPercent91 = 91;
+        int historyGrade = 2;
+        
+        if (historyPercent > borderPercent60) {
+            historyGrade = 3;
+        } else if (historyPercent > borderPercent73) {
+            historyGrade = 4;
+        } else if (historyPercent > borderPercent91) {
+            historyGrade = 5;
+        } 
 
-        if (historyProcent <= borderProcent1) {
-            grade1 = 2;
-        } else if (historyProcent > borderProcent1) {
-            grade1 = 3;
-        } else if (historyProcent > borderProcent2) {
-            grade1 = 4;
-        } else if (historyProcent > borderProcent3) {
-            grade1 = 5;
+        System.out.println("Оценка : " + historyGrade + " история");
+
+        int programmingGrade = 2;
+
+        if (programmingPercent > borderPercent60 && programmingPercent < borderPercent73) {
+            programmingGrade = 3;
+        } else if (programmingPercent >= borderPercent73 && programmingPercent < borderPercent91) {
+            programmingGrade = 4;
+        } else if (programmingPercent >= borderPercent91) {
+            programmingGrade = 5;
         }
 
-        System.out.println("Оценка : " + grade1 + " история");
-
-        if (programmingProcent <= borderProcent1) {
-            grade2 = 2;
-        } else if (programmingProcent > borderProcent1 && programmingProcent < borderProcent2) {
-            grade2 = 3;
-        } else if (programmingProcent >= borderProcent2 && programmingProcent < borderProcent3) {
-            grade2 = 4;
-        } else if (programmingProcent >= borderProcent3) {
-            grade2 = 5;
-        }
-
-        System.out.println("Оценка : " + grade2 + " программирование");
-        System.out.println("Средняя оценка по предметам : " + ((grade1 + grade2) / 2));
-        System.out.println("Средний % по предметам : " + ((historyProcent + programmingProcent) / 2));
+        System.out.println("Оценка : " + programmingGrade + " программирование");
+        System.out.println("Средняя оценка по предметам : " + ((historyGrade + programmingGrade) / 2));
+        System.out.println("Средний % по предметам : " + ((historyPercent + programmingPercent) / 2));
 
         System.out.println("\n8.Расчет прибыли за год : ");
         int roomPrice = 5000; 
         int averageProduct = 13000; 
         int costPrice = 9000; 
 
-        int annualProfit = ((averageProduct * 12) - ((costPrice * 12) + (5000 * 12)));
-        System.out.println("Прибыль за год : " + annualProfit);
+        int annualProfit = 12 * (averageProduct - costPrice  + roomPrice);
+
+        if (annualProfit > 0) {
+            System.out.println("Прибыль за год : +" + annualProfit + "руб");
+        } else {
+            System.out.println("Прибыль за год : " + annualProfit + "руб");
+        }
+        
 
         System.out.println("\n9.Подсчет количества банкнот : ");
         int bankomatCash = 1100;
