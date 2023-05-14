@@ -121,17 +121,16 @@ public class IfElseStatementTheme {
         int border100_000 = 100_000; // граница вклада 1
         int border300_000 = 300_000; // граница вклада 2
 
-        double percent5 = 5.0;
         double percent7 = 7.0;
         double percent10 = 10.0;
-        double accruedInterest = 0.0;  
+        double accruedInterest = 5.0;  
     
-        if (depositAmount < border100_000) {
-            accruedInterest = depositAmount * percent5 / 100;
-        } else if (depositAmount >= border100_000 && depositAmount < border100_000) {
+        if (depositAmount >= border100_000 && depositAmount < border100_000) {
             accruedInterest = depositAmount * percent7 / 100;
         } else if (depositAmount >= border300_000) {
             accruedInterest = depositAmount * percent10 / 100;    
+        } else {
+            accruedInterest = depositAmount * accruedInterest / 100; // depositAmount < border100_000
         }
 
         double sumPercentTotal = depositAmount + accruedInterest; 
