@@ -49,24 +49,23 @@ public class IfElseStatementTheme {
         }
 
         System.out.println("\n3.Проверка числа : ");
-        int checkValue = -23;
+        int srcNum = -23;
 
-        if (checkValue == 0) {
-                System.out.println("Число : " + checkValue + " равно нулю");
+        if (srcNum == 0) {
+            System.out.println("Число : " + srcNum + " равно нулю");
         } else {
-            if (checkValue != 0) {
-                if (checkValue % 2 == 0) {
-                    System.out.println("Число : " + checkValue + " четное");
-                } else {
-                    System.out.println("Число : " + checkValue + " нечетное");
-                }
-
-                if (checkValue > 0) {
-                    System.out.println("Число : " + checkValue + " положительное");
-                } else {
-                    System.out.println("Число : " + checkValue + " отрицательное");
-                }
+            if (srcNum % 2 == 0) {
+                System.out.println("Число : " + srcNum + " четное");
+            } else {
+                System.out.println("Число : " + srcNum + " нечетное");
             }
+
+            if (srcNum > 0) {
+                System.out.println("Число : " + srcNum + " положительное");
+            } else {
+                System.out.println("Число : " + srcNum + " отрицательное");
+            }
+            
             
         }
 
@@ -103,45 +102,43 @@ public class IfElseStatementTheme {
         }
         
         System.out.println("\n5.Определение символа по его коду : ");
-        char chValue = '\u0057';
-        int iChar = (int) chValue;
-        int iChar2 = 0;
+        char unknownChar = '\u0097'; // 'a' 
         
-        if (chValue >= 'A' && chValue <= 'Z') {  
-            iChar2 += iChar + 32;
-            System.out.println("Символ : " + chValue + "\nМаленькая буква : " + 
-            (char)iChar2 + "\nБольшая буква : " + chValue);
-        } else if (chValue >= '0' && chValue <= '9') {
-            System.out.println("Число : " + chValue);
-        }  else {
-            if (!(chValue >= 'A' && chValue <= 'z') && !(chValue >= '0' && chValue <= '9')) {
-                System.out.println("Символ " + chValue + "\nНе буква и не число");
+        if (unknownChar >= '\u0097' && unknownChar <= '\u0122') {
+            System.out.println("\nМаленькая буква : " + unknownChar);
+        } else if (unknownChar >= '\u0065' && unknownChar <= '\u0090') {  
+            System.out.println("\nБольшая буква : " + unknownChar);
+        } else if (unknownChar >= '\u0048' && unknownChar <= '\u0057') {
+            System.out.println("\nЧисло : " + unknownChar);
+        } else {
+            if (!(unknownChar >= '\u0097' && unknownChar <= '\u0122') && 
+                !(unknownChar >= '\u0065' && unknownChar <= '\u0090') &&
+                !(unknownChar >= '\u0048' && unknownChar <= '\u0057')) {
+                System.out.println("Символ " + unknownChar + "\nНе буква и не число");
             }
-            
         }
-
+         
         System.out.println("\n6.Подсчет суммы вклада и начисленных банком % : ");
         int depositAmount = 300_000; // сумма вклада
-        int sumBorder1 = 100_000; // граница вклада 1
-        int sumBorder2 = 300_000; // граница вклада 2
+        int border100_000 = 100_000; // граница вклада 1
+        int border300_000 = 300_000; // граница вклада 2
 
-        double percent1 = 5.0;
-        double percent2 = 7.0;
-        double percent3 = 10.0;
-
-        double percentPlus = 0.0;  
+        double percent5 = 5.0;
+        double percent7 = 7.0;
+        double percent10 = 10.0;
+        double accruedInterest = 0.0;  
     
-        if (depositAmount < sumBorder1) {
-            percentPlus = depositAmount * percent1 / 100;
-        } else if (depositAmount >= sumBorder1 && depositAmount < sumBorder1) {
-            percentPlus = depositAmount * percent2 / 100;
-        } else if (depositAmount >= sumBorder2) {
-            percentPlus = depositAmount * percent3 / 100;    
+        if (depositAmount < border100_000) {
+            accruedInterest = depositAmount * percent5 / 100;
+        } else if (depositAmount >= border100_000 && depositAmount < border100_000) {
+            accruedInterest = depositAmount * percent7 / 100;
+        } else if (depositAmount >= border300_000) {
+            accruedInterest = depositAmount * percent10 / 100;    
         }
 
-        double sumPercentTotal = depositAmount + percentPlus; 
+        double sumPercentTotal = depositAmount + accruedInterest; 
 
-        System.out.println("Сумма вклада : " + depositAmount + "\nНачисленный процент : " + percentPlus + 
+        System.out.println("Сумма вклада : " + depositAmount + "\nНачисленный процент : " + accruedInterest + 
                             "\nИтоговая сумма с % : " + sumPercentTotal);
 
         System.out.println("\n7.Определение оценки по предметам : ");
