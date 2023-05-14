@@ -65,8 +65,6 @@ public class IfElseStatementTheme {
             } else {
                 System.out.println("Число : " + srcNum + " отрицательное");
             }
-            
-            
         }
 
         System.out.println("\n4.Поиск одинаковых цифр в числах : ");
@@ -158,9 +156,7 @@ public class IfElseStatementTheme {
         } 
 
         System.out.println("Оценка : " + historyGrade + " история");
-
         int programmingGrade = 2;
-
         if (programmingPercent > borderPercent60 && programmingPercent < borderPercent73) {
             programmingGrade = 3;
         } else if (programmingPercent >= borderPercent73 && programmingPercent < borderPercent91) {
@@ -186,7 +182,6 @@ public class IfElseStatementTheme {
             System.out.println("Прибыль за год : " + annualProfit + "руб");
         }
         
-
         System.out.println("\n9.Подсчет количества банкнот : ");
         int bankomatCash = 1100;
         int dollarCashWith = 567;
