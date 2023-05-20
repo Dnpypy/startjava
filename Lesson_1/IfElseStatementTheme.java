@@ -179,59 +179,56 @@ public class IfElseStatementTheme {
         }
         
         System.out.println("\n9.Подсчет количества банкнот : ");
-        int bankomatCash = 1550;
-        int bankomatCashNominal100 = 1000;
-        int bankomatCashNominal10 = 50;
-        int bankomatCashNominal1 = 50;
+        int atmCash = 1550;
         int dollarCashWith = 567;
-        String infoNominal = "";
-        String infoCashpayment = "";
-        String infoErrorPayment = "";
-        String infoAllCashPayment = "";
-
-        if (dollarCashWith > bankomatCash) {
-            infoErrorPayment = "В банкомате нет нужной суммы!!";
-        } else {
-            infoAllCashPayment = "Выдаваемую сумму : " + dollarCashWith + " USD";
-            if ((dollarCashWith > 99 && (dollarCashWith < 1000))) {
-            infoNominal = "\nНоминалы банкнот : " + "\n100" + "\n10" + "\n1";
-            int hundred = dollarCashWith / 100;
-            int tens = dollarCashWith / 10 % 10;
-            int ones = dollarCashWith % 10;
-            if (tens >= 5) {
-                int nominalOnes = (tens - 5) * 10;
-                tens = 5;
-                infoCashpayment = "\nТребуемое их количество : \n" + hundred + " банкнот номиналом 100 \n" + 
-                    tens + " банкнот номиналом 10\n" + (ones + nominalOnes) + " банкнот номиналом 1\n";    
-            } else {
-                infoCashpayment = "\nТребуемое их количество : \n" + hundred + " банкнот номиналом 100 \n" + 
-                              tens + " банкнот номиналом 10\n" + ones + " банкнот номиналом 1\n";
-            }
         
-            } else if ((dollarCashWith > 9 && (dollarCashWith < 100))) {
-                infoNominal = "\nНоминалы банкнот : " + "\n10" + "\n1";
-                int tens = dollarCashWith / 10 % 10;
-                int ones = dollarCashWith % 10;
-                if (tens >= 5) {
-                    int nominalOnes = (tens - 5) * 10;
-                    tens = 5;
-                    infoCashpayment = "\nТребуемое их количество : \n" + tens + " банкнот номиналом 10\n" + 
-                        (ones + nominalOnes) + " банкнот номиналом 1\n";    
+        if (dollarCashWith > atmCash) {
+            System.out.println("В банкомате нет нужной суммы!!");
+        } else {
+                System.out.println("Выдаваемую сумму : " + dollarCashWith + " USD");
+            
+            if ((dollarCashWith > 99 && (dollarCashWith < 1000))) {
+                System.out.println("\nНоминалы банкнот : " + "\n100" + "\n10" + "\n1");
+                int atmCashNominal100 = dollarCashWith / 100;
+                int atmCashNominal10 = dollarCashWith / 10 % 10;
+                int atmCashNominal1 = dollarCashWith % 10;
+
+                if (atmCashNominal10 >= 5) {
+                    int nominalOn = (atmCashNominal10 - 5) * 10;
+                    atmCashNominal10 = 5;
+                    System.out.println("\nТребуемое их количество : \n" + atmCashNominal100 + 
+                        " банкнот номиналом 100 \n" + 
+                        atmCashNominal10 + " банкнот номиналом 10\n" + (atmCashNominal1 + nominalOn) + 
+                    " банкнот номиналом 1\n");    
                 } else {
-                    infoCashpayment = "\nТребуемое их количество : \n" + tens + " банкнот номиналом 10\n" + ones + 
-                        " банкнот номиналом 1\n"; 
+                    System.out.println("\nТребуемое их количество : \n" + atmCashNominal100 + 
+                        " банкнот номиналом 100 \n" + 
+                                  atmCashNominal10 + " банкнот номиналом 10\n" + atmCashNominal1 + 
+                                  " банкнот номиналом 1\n");
+                }
+
+            } else if ((dollarCashWith > 9 && (dollarCashWith < 100))) {
+                System.out.println("\nНоминалы банкнот : " + "\n10" + "\n1");
+                int atmCashNominal10 = dollarCashWith / 10 % 10;
+                int atmCashNominal1 = dollarCashWith % 10;
+                if (atmCashNominal10 >= 5) {
+                    int nominalOn = (atmCashNominal10 - 5) * 10;
+                    atmCashNominal10 = 5;
+                    System.out.println("\nТребуемое их количество : \n" + atmCashNominal10 + 
+                        " банкнот номиналом 10\n" + 
+                        (atmCashNominal1 + nominalOn) + " банкнот номиналом 1\n");    
+                } else {
+                    System.out.println("\nТребуемое их количество : \n" + atmCashNominal10 + 
+                        " банкнот номиналом 10\n" + 
+                        atmCashNominal1 + " банкнот номиналом 1\n"); 
                 }
                 
             } else if ((dollarCashWith > 0 && (dollarCashWith < 10))) {
-                int ones = dollarCashWith % 10;
-                infoNominal = "\nНоминалы банкнот : " + "\n";
-                infoCashpayment = "\nТребуемое их количество : \n" + ones + " банкнот номиналом 1\n";
+                int atmCashNominal1 = dollarCashWith % 10;
+                System.out.println("\nНоминалы банкнот : " + "\n");
+                System.out.println("\nТребуемое их количество : \n" + atmCashNominal1 + 
+                    " банкнот номиналом 1\n");
             }
         }
-        
-        System.out.println(infoNominal);
-        System.out.println(infoCashpayment);
-        System.out.println(infoAllCashPayment);
-        System.out.println(infoErrorPayment);
     }   
 }
