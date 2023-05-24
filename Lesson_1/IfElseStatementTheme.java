@@ -179,56 +179,68 @@ public class IfElseStatementTheme {
         }
         
         System.out.println("\n9.Подсчет количества банкнот : ");
-        int atmCash = 1550;
-        int dollarCashWith = 567;
+        int atmCash = 1100;
+        int cashingOut = 67;
         
-        if (dollarCashWith > atmCash) {
+        // тестировал цифры : 1091, 1099, 1049, 999, 457, 8, 1100, 22, 67
+        if (cashingOut > atmCash || cashingOut < 0) {
             System.out.println("В банкомате нет нужной суммы!!");
         } else {
-                System.out.println("Выдаваемую сумму : " + dollarCashWith + " USD");
-            
-            if ((dollarCashWith > 99 && (dollarCashWith < 1000))) {
-                System.out.println("\nНоминалы банкнот : " + "\n100" + "\n10" + "\n1");
-                int atmCashNominal100 = dollarCashWith / 100;
-                int atmCashNominal10 = dollarCashWith / 10 % 10;
-                int atmCashNominal1 = dollarCashWith % 10;
-
-                if (atmCashNominal10 >= 5) {
-                    int nominalOn = (atmCashNominal10 - 5) * 10;
-                    atmCashNominal10 = 5;
-                    System.out.println("\nТребуемое их количество : \n" + atmCashNominal100 + 
-                        " банкнот номиналом 100 \n" + 
-                        atmCashNominal10 + " банкнот номиналом 10\n" + (atmCashNominal1 + nominalOn) + 
-                    " банкнот номиналом 1\n");    
-                } else {
-                    System.out.println("\nТребуемое их количество : \n" + atmCashNominal100 + 
-                        " банкнот номиналом 100 \n" + 
-                                  atmCashNominal10 + " банкнот номиналом 10\n" + atmCashNominal1 + 
-                                  " банкнот номиналом 1\n");
-                }
-
-            } else if ((dollarCashWith > 9 && (dollarCashWith < 100))) {
-                System.out.println("\nНоминалы банкнот : " + "\n10" + "\n1");
-                int atmCashNominal10 = dollarCashWith / 10 % 10;
-                int atmCashNominal1 = dollarCashWith % 10;
-                if (atmCashNominal10 >= 5) {
-                    int nominalOn = (atmCashNominal10 - 5) * 10;
-                    atmCashNominal10 = 5;
-                    System.out.println("\nТребуемое их количество : \n" + atmCashNominal10 + 
-                        " банкнот номиналом 10\n" + 
-                        (atmCashNominal1 + nominalOn) + " банкнот номиналом 1\n");    
-                } else {
-                    System.out.println("\nТребуемое их количество : \n" + atmCashNominal10 + 
-                        " банкнот номиналом 10\n" + 
-                        atmCashNominal1 + " банкнот номиналом 1\n"); 
-                }
+                /** ПЕРЕМЕННЫЕ БАНКНОТ **/
+                int atmCashNominal100 = 0; // номинал банкнот 100
+                int atmCashNominal10 = 0;  // номинал банкнот 10
+                int atmCashNominal1 = 0;   // номинал банкнот 1
+                int atmCashNominalTemp = 0; // временная переменная 
                 
-            } else if ((dollarCashWith > 0 && (dollarCashWith < 10))) {
-                int atmCashNominal1 = dollarCashWith % 10;
-                System.out.println("\nНоминалы банкнот : " + "\n");
-                System.out.println("\nТребуемое их количество : \n" + atmCashNominal1 + 
-                    " банкнот номиналом 1\n");
-            }
+                /** ПОДСЧЕТ **/
+                if (cashingOut > 1000) {
+                    atmCashNominal100 = cashingOut / 100;
+                    atmCashNominal10 = (cashingOut / 10 % 10);
+                    atmCashNominal1 = cashingOut % 10;
+                    if (atmCashNominal100 > 10) {
+                        atmCashNominal100 = 10;
+                        atmCashNominal10 = 10;
+                    }
+                    if (atmCashNominal10 >= 5) { 
+                        atmCashNominalTemp1 = (atmCashNominal10 - 5) * 10;
+                        atmCashNominal10 = 5;
+                    }
+                } else if ((cashingOut > 99) && (cashingOut < 1000)) {
+                    atmCashNominal100 = cashingOut / 100;
+                    atmCashNominal10 = (cashingOut / 10 % 10);
+                    if (atmCashNominal10 >= 5) { 
+                        atmCashNominalTemp1 = (atmCashNominal10 - 5) * 10;
+                        atmCashNominal10 = 5;
+                    }
+                    atmCashNominal1 = cashingOut % 10 ;
+                } else if (cashingOut > 10 && cashingOut < 100) {
+                    atmCashNominal10 = (cashingOut / 10 % 10);
+                    if (atmCashNominal10 >= 5) { 
+                        atmCashNominalTemp1 = (atmCashNominal10 - 5) * 10;
+                        atmCashNominal10 = 5;
+                    }
+                    atmCashNominal1 = cashingOut % 10;
+                } else if (cashingOut < 10) {
+                    atmCashNominal1 = cashingOut % 10;
+                }
+
+                /** ВЫВОД БАНКНОТ **/
+                System.out.println("Требуется количество банкнот для выдаваемой суммы : ");
+                if (cashingOut > 1000) {
+                    System.out.println(atmCashNominal100 + " по 100 $");
+                    System.out.println(atmCashNominal10 + " по 10 $");
+                    System.out.println("1 по " + (atmCashNominal1 + atmCashNominalTemp1) + " $");
+                } else if ((cashingOut > 99) && (cashingOut < 1000)) {
+                    System.out.println(atmCashNominal100 + " по 100 $");
+                    System.out.println(atmCashNominal10 + " по 10 $");
+                    System.out.println("1 по " + (atmCashNominal1 + atmCashNominalTemp1) + " $");
+                } else if (cashingOut > 10 && cashingOut < 100) {
+                    System.out.println(atmCashNominal10 + " по 10 $");
+                    System.out.println("1 по " + (atmCashNominal1 + atmCashNominalTemp1) + " $");
+                } else if (cashingOut < 10) {
+                    System.out.println("1 по " + (atmCashNominal1 + " $"));
+                }
+                System.out.println("\nВыдаваемую сумму : " + cashingOut + " USD");
         }
     }   
 }
