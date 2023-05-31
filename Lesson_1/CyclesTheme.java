@@ -1,5 +1,3 @@
-
-
 public class CyclesTheme {
     public static void  main(String[] args) {
         System.out.println("1.Подсчет суммы четных и нечетных чисел : ");
@@ -18,23 +16,30 @@ public class CyclesTheme {
          " а нечетных = " + sumOdd);
         
         System.out.println("\n2.Вывод чисел в интервале (min и max) в порядке убывания : ");
-        int max = 10;
-        int min = -1;
-        int number = 5;
+        int num1 = 5;
+        int num2 = 10;
+        int num3 = -1;
+        int max = 0;
+        int min = 0;
 
-        if (number < min) {
-            min = number;
-        } 
-        if (max < min) {
-            min = max;
+        if (num1 < num2) {
+            min = num1;
+        } else {
+            min = num2;
         }
 
-        if (max < number) {
-            max = number;
+        if (min > num3){
+            min = num3;
         }
 
-        if (max < min) {
-            max = min;
+        if (num1 > num2) {
+            max = num1;
+        } else {
+            max = num2;
+        }
+
+        if (max < num3){
+            max = num3;
         }
 
         for (int i = max - 1; i > min; i--) {
@@ -43,55 +48,58 @@ public class CyclesTheme {
 
         System.out.println("\n\n3.Вывод реверсивного числа и суммы его цифр : ");
         int num = 1234;
-        int sumNumbers = 0;
-        int remaind = 0; 
-
+        int sumDigits = 0;
+        
         while (num > 0) {
-            remaind = num % 10; // остаток от числа
-            System.out.print(remaind + " "); // цифры в строку ... ... .. .. 
-            num = num /= 10; //откидываю крайнее число
-            sumNumbers += remaind;
+            int remainder = num % 10; // остаток от числа
+            System.out.print(remainder); // цифры в строку ... ... .. .. 
+            num /= 10; //откидываю крайнее число
+            sumDigits += remainder;
         }
-        System.out.println("\nСумма цифр : " + sumNumbers);
+        System.out.println("\nСумма цифр : " + sumDigits);
 
         System.out.println("\n4.Вывод чисел на консоль в несколько строк: ");
 
+        counter = 1;
         for (int i = 1; i < 24; i += 2) {
             System.out.printf("%2d", i);
             System.out.print(" ");
-            if ((i == 8 || i == 9) || (i == 19 || i == 20)) {
+            if (counter == 5) {
                 System.out.println();
-            }
-
-            if (i == 23) {
-                System.out.printf("%2d", 0);
-                System.out.print(" ");
-                System.out.printf("%2d", 0);
-                System.out.print(" ");
-                System.out.printf("%2d", 0);
+                counter = 1;
+            } else {
+                counter++;
             }
             
-            
+        }
+        
+        int fiveNum = 5;
+        if (counter <= 5) {
+            fiveNum -= counter;
+            for (int i = 0;i <= fiveNum ; i++) {
+                System.out.printf("%2d", 0);
+                System.out.print(" ");
+            }
         }
 
         System.out.println("\n\n5.Проверка количества двоек на четность/нечетность: ");
-        num = 3242592;
-        int copyNum = num; // для вывода в конце
+        int copyNum = 324259222;
+        num = copyNum; // для вывода в конце
         int remainder = 0; // остаток от числа
         int countTwos = 0; // количество двоек
 
-        while (num != 0) {
-            remainder = num % 10; 
-            num = num /= 10; //откидываю крайнее число
+        while (copyNum != 0) {
+            remainder = copyNum % 10; 
+            copyNum /= 10; //откидываю крайнее число
             if (remainder % 10 == 2) {
                 countTwos++;
             }
         }
         
         if (countTwos % 2 == 0) {
-            System.out.println("число " + copyNum + " содержит " + countTwos + " четное количество двоек");
+            System.out.println("число " + num + " содержит " + countTwos + " четное количество двоек");
         } else {
-            System.out.println("число " + copyNum + " содержит " + countTwos + " нечетное количество двоек");
+            System.out.println("число " + num + " содержит " + countTwos + " нечетное количество двоек");
         }
 
         System.out.println("\n6.Отображение фигур в консоли: ");
@@ -189,16 +197,16 @@ public class CyclesTheme {
         }
 
         System.out.println("\n10.Вывод таблицы умножения Пифагора : ");
-        int i, j;
+
         System.out.printf(" * |");
-        for (i = 2; i < 10; i++){
+        for (int i = 2; i < 10; i++){
             System.out.printf("%2d ", i);
         }
         System.out.printf("\n---|------------");
         System.out.printf("----------------\n");
-        for (i = 2;i < 10; i++) {
+        for (int i = 2;i < 10; i++) {
             System.out.printf("%2d |", i);
-            for (j = 1; j < 10; j++) {
+            for (int j = 1; j < 10; j++) {
                 System.out.printf("%2d ", i * j);
             }
             System.out.printf("\n");
