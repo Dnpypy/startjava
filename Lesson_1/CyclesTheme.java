@@ -19,28 +19,12 @@ public class CyclesTheme {
         int num1 = 5;
         int num2 = 10;
         int num3 = -1;
-        int max = 0;
-        int min = 0;
+        
+        int temp = num1 > num2 ? num1 : num2;
+        int max = temp > num3 ? temp : num3;
 
-        if (num1 < num2) {
-            min = num1;
-        } else {
-            min = num2;
-        }
-
-        if (min > num3){
-            min = num3;
-        }
-
-        if (num1 > num2) {
-            max = num1;
-        } else {
-            max = num2;
-        }
-
-        if (max < num3){
-            max = num3;
-        }
+        temp = num1 < num2 ? num1 : num2;
+        int min = temp < num3 ? temp : num3;
 
         for (int i = max - 1; i > min; i--) {
             System.out.print(i + " ");
@@ -70,28 +54,32 @@ public class CyclesTheme {
             } else {
                 counter++;
             }
-            
         }
         
-        int fiveNum = 5;
-        if (counter <= 5) {
-            fiveNum -= counter;
-            for (int i = 0;i <= fiveNum ; i++) {
-                System.out.printf("%2d", 0);
-                System.out.print(" ");
+        int border = 5;
+        if (counter <= border) {
+            border -= counter;
+            // если было counter = 1, то не захожу в цикл с нулями
+            if (border == 4) { 
+                int temp2; // объявил переменную временную
+            } else {
+                for (int i = 0;i <= border; i++) {
+                    System.out.printf("%2d", 0);
+                    System.out.print(" ");
+                }
             }
+            
         }
 
         System.out.println("\n\n5.Проверка количества двоек на четность/нечетность: ");
-        int copyNum = 324259222;
-        num = copyNum; // для вывода в конце
+        num = 324259222;
+        int copyNum = num; // для вывода в конце
         int remainder = 0; // остаток от числа
         int countTwos = 0; // количество двоек
 
-        while (copyNum != 0) {
-            remainder = copyNum % 10; 
+        while (copyNum > 0) {
             copyNum /= 10; //откидываю крайнее число
-            if (remainder % 10 == 2) {
+            if (copyNum % 10 == 2) {
                 countTwos++;
             }
         }
@@ -104,25 +92,24 @@ public class CyclesTheme {
 
         System.out.println("\n6.Отображение фигур в консоли: ");
         for (int i = 1; i <= 50 ; i++) {
-            System.out.print("#");
+            System.out.print("*");
             if (i % 10 == 0) {
                 System.out.println();
             }
         }
         System.out.println();
 
-        int space = 0; // в первой строке количество пробелов в начале строки 0
-        int gratings = 5; // в первой строке количество решеток равно ширине
-        while (gratings > 0) { // пока есть решетки для вывода
+        int space = 0; 
+        int gratings = 5; 
+        while (gratings > 0) { 
             for (int i = 0;i < space; i++) {
                 System.out.println(" ");
             }
-            for (int i = 0; i < gratings; i++) { //потом выводим решеток штук
+            for (int i = 0; i < gratings; i++) { 
                 System.out.print("#");
             }
-            System.out.println(); //переводим курсор
-            // готовимся к следующей итерации цикла
-            gratings--; //решеток на одну меньше
+            System.out.println(); 
+            gratings--; 
         }
 
         System.out.println();
@@ -145,54 +132,52 @@ public class CyclesTheme {
         
         for (int i = 1; i <= 122 ; i++) {
             if (i % 2 != 0 && i < 48) {
-                System.out.printf("%2d", i);
-                System.out.print(" " + perevod(i));
-                System.out.println();
+                System.out.printf("%2s", perevod(i) + "\n");
             }
             if (i % 2 == 0 && i >= 97) {
-                System.out.printf("%2d", i);
-                System.out.print(" " + perevod(i));
-                System.out.println();
+                System.out.printf("%2s", perevod(i) + "\n");
             }
         }    
 
         System.out.println("\n8.Проверка, является ли число палиндромом : ");
         
         num = 1234321;
-        int revertNumber = 0;
+        int revertNum = 0;
         copyNum = num;
 
         while (copyNum > 0) {
             remainder = copyNum % 10;
-            revertNumber = (revertNumber * 10) + remainder;
+            revertNum = (revertNum * 10) + remainder;
             copyNum /= 10;
         }
         
-        if (num == revertNumber) {
+        if (num == revertNum) {
             System.out.println("число " + num + " является палиндромом");
+        } else {
+            System.out.println("число " + num + "не является палиндромом");
         }
 
         System.out.println("\n9.Определение, является ли число счастливым : ");
         num = 424424; 
         copyNum = num;
         counter = 1;
-        int firstThreeNumbers = 0;
-        int twosThreeNumbers = 0;
+        int firstThreeNums = 0;
+        int twosThreeNums = 0;
 
         while (counter != 7) {
             if (counter < 4) {
-                firstThreeNumbers += num % 10;
+                firstThreeNums += num % 10;
                 num /= 10;
             } else {
-                twosThreeNumbers += num % 10;
+                twosThreeNums += num % 10;
                 num /= 10;
             }
             counter++;
         }
-        System.out.println(firstThreeNumbers);
-        System.out.println(twosThreeNumbers);
+        System.out.println(firstThreeNums);
+        System.out.println(twosThreeNums);
 
-        if ((firstThreeNumbers == twosThreeNumbers)) {
+        if ((firstThreeNums == twosThreeNums)) {
             System.out.println("Число " + copyNum + " счастливое!");
         }
 
@@ -211,8 +196,6 @@ public class CyclesTheme {
             }
             System.out.printf("\n");
         } 
-            
-        
     }
 
     // метод переводящий из int -> char для 7-й задачи
