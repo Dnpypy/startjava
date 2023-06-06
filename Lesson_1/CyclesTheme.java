@@ -12,11 +12,8 @@ public class CyclesTheme {
             }
             counter++;
         } while (counter <= 21);
-        System.out.println("в промежутке [-10, 21] сумма четных чисел = " + 
-                sumEven + 
-                "," +
-                " а нечетных = " + 
-                sumOdd);
+        System.out.println("в промежутке [-10, 21] сумма четных чисел = " + sumEven +
+                "," + " а нечетных = " + sumOdd);
         
         System.out.println("\n2.Вывод чисел в интервале (min и max) в порядке убывания : ");
         int num1 = 5;
@@ -78,7 +75,7 @@ public class CyclesTheme {
         num = 3242592;
         int copyNum = num; // для вывода в конце
         int remainder = 0; // остаток от числа
-        int countTwos = 0; // количество двоек
+        int countTwos = 0; 
 
         while (copyNum > 0) {
             if (copyNum % 10 == 2) {
@@ -121,7 +118,7 @@ public class CyclesTheme {
 
         System.out.println();
 
-        int countLine = 1; // количество строк
+        int countLine = 1; 
         do {
             if (countLine == 1 || countLine == 5) {
                 System.out.print("$  ");
@@ -140,12 +137,12 @@ public class CyclesTheme {
         for (int i = 1; i <= 122 ; i++) {
             if (i < 48) {
                 if (i % 2 != 0) {
-                    System.out.printf("%2c", i);    
+                    System.out.printf("%2d %2c",i , i);    
                 }
                 System.out.println();
             } else if (i >= 97) {
                 if (i % 2 == 0) {
-                    System.out.printf("%2c", i);    
+                    System.out.printf("%2d %2c",i , i);    
                 }
                 System.out.println();
             }
@@ -197,7 +194,7 @@ public class CyclesTheme {
         System.out.println("\n10.Вывод таблицы умножения Пифагора : ");
 
         System.out.printf(" * |");
-        for (int i = 2; i < 10; i++){
+        for (int i = 2; i < 10; i++) {
             System.out.printf("%2d ", i);
         }
         System.out.println("\n---|----------------------------");
@@ -209,9 +206,4 @@ public class CyclesTheme {
             System.out.println();
         } 
     }
-
-    // метод переводящий из int -> char для 7-й задачи
-    // public static char perevod (int ch) {
-    //       return (char) ch;
-    // }
 }
