@@ -1,27 +1,27 @@
 public class MyFirstGame {
-    public static void  main(String[] args) {
+    public static void main(String[] args) {
         System.out.println("\nИгра Угадай число : ");
 
         int computerNumber = 79;
         bSearch(computerNumber);
     }
 
-    public static void bSearch(int elementToSearch) {
+    public static void bSearch(int computerNumber) {
         int min = 0;
         int max = 100;
-        int midRange = 0;
+        int middle = 0;
         
         while (min <= max) {
-            midRange = (min + max) / 2; 
-            if (midRange < elementToSearch) {
-                min = midRange + 1;
-                System.out.println(midRange + " число меньше того, что загадал компьютер");
-            } else if (midRange == elementToSearch) {
-                System.out.printf(elementToSearch + " число найдено ");
+            middle = (min + max) / 2; 
+            if (middle == computerNumber) {
+                System.out.printf(computerNumber + " число найдено ");
                 break;
+            } else if (middle < computerNumber) {
+                min = middle + 1;
+                System.out.println(middle + " число меньше того, что загадал компьютер");
             } else {
-                max = midRange - 1;
-                System.out.printf(midRange + " число больше того, что загадал компьютер\n");
+                max = middle - 1;
+                System.out.printf(middle + " число больше того, что загадал компьютер\n");
             }
         }
     }
