@@ -16,11 +16,10 @@ public class Calculator {
         } else if (sign == '/') {
             result = num1 / num2;
         } else if (sign == '^') {
-            int temp = 1;
+            result = 1;
             for (int i = 1; i <= num2; i++) {
-                temp = temp * num1; 
+                result *= num1; 
             }
-            result = temp;
         } else if (sign == '%') {
             result = num1 % num2;
         }
