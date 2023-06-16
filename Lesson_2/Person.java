@@ -5,23 +5,23 @@ public class Person {
     int weight = 75;
     int age = 41;
 
-    void walk () {
+    void walk() {
 
     }
 
-    void sit () {
+    void sit() {
 
     }
 
-    void run () {
+    void run() {
 
     }
 
-    void talk () {
+    void talk() {
 
     }
 
-    void learn () {
+    void learn() {
 
     }
 }
