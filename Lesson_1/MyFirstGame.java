@@ -2,7 +2,7 @@ public class MyFirstGame {
     public static void main(String[] args) {
         System.out.println("\nИгра Угадай число : ");
 
-        int computerNumber = 79;
+        int computerNumber = 3;
         bSearch(computerNumber);
     }
 
