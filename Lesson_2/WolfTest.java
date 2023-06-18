@@ -13,7 +13,7 @@ public class WolfTest {
         System.out.println(wolf1.age);
         System.out.println(wolf1.color);
 
-        
+        //wolf1.age;
     }
     
 
