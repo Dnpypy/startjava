@@ -13,6 +13,4 @@ public class WolfTest {
         wolf1.setColor("violet");
         System.out.println(wolf1.getColor());
     }
-    
-
 }
