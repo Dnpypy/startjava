@@ -73,15 +73,15 @@ public class Calculator {
 
     }
 
-    public void nameProgramm(){
+    public void nameProgramm() {
         System.out.println("\nКалькулятор : ");
     }
 
-    public void errorTextSign(){
+    public void errorTextSign() {
         System.out.println("введенная математическая операция не поддерживается!");
     }
     
-    public void textContinueProgramm(){
+    public void textContinueProgramm() {
         System.out.println("Хотите продолжить вычисления? [yes/no]: ");
     }
 }
