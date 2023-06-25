@@ -1,87 +1,85 @@
-import java.util.Scanner;
 
 public class Calculator {
 
-    private int result; 
     private int cycle; 
-    private static Scanner sc = new Scanner(System.in);
-    public static int num1;
-    public static int num2;
-    public static char sign;
-
-    public Calculator(int result, int cycle) {
-        this.result = result;
+    public int num1;
+    public int num2;
+    public char sign;
+    public static char signPrint; // для отображение знака в выводе и для вычисления
+    
+    public Calculator(int cycle) {
         this.cycle = cycle;
     }
 
-    public int setResult(int result) {
-        return result;
+    public void setCycle(int cycle) {
+        this.cycle = cycle;
     }
 
-    public int setCycle(int cycle) {
+    public int getCycle() {
         return cycle;
     }
 
-    public void cycleRun() {
+    public int getNum1(){
+        return num1;
+    }
 
-        while (cycle > 1) {
-            System.out.println("Введите первое число: ");
-            int num1 = sc.nextInt();
-            System.out.println("Введите знак математической операции: ");
-            char sign = sc.next().charAt(0);
-            System.out.println("Введите второе число: ");
-            int num2 = sc.nextInt();
-            
-            switch (sign) {
-                case '+' :
-                    setResult(num1 + num2);
-                    break;
-                case '-' :
-                    setResult(num1 - num2);
-                    break;
-                case '*' :
-                    setResult(num1 * num2);
-                    break;
-                case '/' :
-                    setResult(num1 / num2);
-                    break;
-                case '^' :
-                    result = 1;
-                    for (int i = 1; i <= num2; i++) {
-                        result *= num1; 
-                    }
-                    break;
-                case '%' :
-                    setResult(num1 % num2);
-                    break;
-                default :
-                    errorTextSign();
-                    break;
+    public int getNum2(){
+        return num2;
+    }
+
+    public char getSign(){
+        return sign;
+    }
+
+    // вычисления
+    public void calculations(int num1, int num2) {
+        var result = 0;
+        switch (signPrint) {
+            case '+' :
+                result = num1 + num2;
+                System.out.println(result);
+                break;
+            case '-' :
+                result = num1 - num2;
+                break;
+            case '*' :
+                result = num1 * num2;
+                break;
+            case '/' :
+                result = num1 / num2;
+                break;
+            case '^' :
+                var temp = 1;
+                for (int i = 1; i <= num2; i++) {
+                    temp *= num1; 
                 }
-                System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
-                contiProgramm();
+                result = temp;
+              break;
+            case '%' :
+                result = num1 % num2;
+                break;
+            default :
+                break;
+            }
+            System.out.println(num1 + " " + signPrint + " " + num2 + " = " + result);
+    }
+
+    // проверка математического знака
+    public int checkSign(char ch) {
+        signPrint = ch;
+        if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^' || ch ==  '%') {
+            return 0;
+        } else {
+            errorTextSign();
+            return 1;
         }
     }
 
-    public void contiProgramm() {
-        textContinueProgramm();
-        var yesNo = sc.next();
-        if (yesNo.equals("no")) {
-            setCycle(cycle -= 1);
-            sc.close();
-        } 
-
-    }
-
-    public void nameProgramm() {
-        System.out.println("\nКалькулятор : ");
-    }
-
-    public void errorTextSign() {
+    void errorTextSign() {
         System.out.println("введенная математическая операция не поддерживается!");
     }
-    
-    public void textContinueProgramm() {
-        System.out.println("Хотите продолжить вычисления? [yes/no]: ");
+
+    void textSign() {
+        System.out.println("Введите знак математической операции: ");
     }
 }
