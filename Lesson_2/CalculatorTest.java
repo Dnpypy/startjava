@@ -25,6 +25,5 @@ public class CalculatorTest {
             System.out.println("Хотите продолжить вычисления? [yes/no]: ");
             yesNo = calc.answered(sc.next());
         } while(yesNo);
-        //}
     }
 }
