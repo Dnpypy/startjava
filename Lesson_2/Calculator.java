@@ -1,4 +1,3 @@
-
 public class Calculator {
 
     private int num1;
@@ -23,14 +22,21 @@ public class Calculator {
 
     // проверка математической операции
     public boolean setSign(char sign) {
-        this.sign = sign;
         if (sign == '+' || sign == '-' || sign == '*' || sign == '/' || sign == '^' || sign ==  '%') {
+            this.sign = sign;
             return false;
         } else {
             System.out.println("введенная математическая операция не поддерживается!");
             return true;
         }
-        
+    }
+
+    // проверка на ответ yes/no
+    public boolean answered(String str) {
+        if (str.equals("no") || str.equals(" ")) {
+            return false;
+        }
+        return true;
     }
 
     public char getSign() {
@@ -40,33 +46,31 @@ public class Calculator {
     // вычисления
     public void calculate() {
         var result = 0;
-        switch (getSign()) {
+        switch (sign) {
             case '+' :
-                result = getNum1() + getNum2();
-                //System.out.println(result);
+                result = num1 + num2;
                 break;
             case '-' :
-                result = getNum1() - getNum2();
+                result = num1 - num2;
                 break;
             case '*' :
-                result = getNum1() * getNum2();
+                result = num1 * num2;
                 break;
             case '/' :
-                result = getNum1() / getNum2();
+                result = num1 / num2;
                 break;
             case '^' :
-                var temp = 1;
-                for (int i = 1; i <= getNum2(); i++) {
-                    temp *= getNum1(); 
+                result = 1;
+                for (int i = 1; i <= num2; i++) {
+                    result *= num1; 
                 }
-                result = temp;
-              break;
+                break;
             case '%' :
-                result = getNum1() % getNum2();
+                result = num1 % num2;
                 break;
             default :
                 break;
             }
-            System.out.println(getNum1() + " " + getSign() + " " + getNum2() + " = " + result);
+            System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
     }
 }
