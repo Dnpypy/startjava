@@ -6,16 +6,13 @@ public class CalculatorTest {
         Calculator calc = new Calculator();
         Scanner sc = new Scanner(System.in);
         
-        boolean yesNo = true;
         do {
             System.out.println("Введите первое число: ");
             calc.setNum1(sc.nextInt());
             
-            var inputCheckSign = true;
             do {
                 System.out.println("Введите знак математической операции: ");
-                inputCheckSign = calc.setSign(sc.next().charAt(0));
-            } while (inputCheckSign);
+            } while (calc.setSign(sc.next().charAt(0)));
             
             System.out.println("Введите второе число: ");
             calc.setNum2(sc.nextInt());
@@ -23,7 +20,15 @@ public class CalculatorTest {
             calc.calculate();
             
             System.out.println("Хотите продолжить вычисления? [yes/no]: ");
-            yesNo = calc.answered(sc.next());
-        } while(yesNo);
+            } while(answered(sc.next()));
+    }
+
+    // проверка на ответ yes/no
+    public static boolean answered(String str) {
+        System.out.println("Хотите продолжить вычисления? [yes/no]: ");
+        if (str.equals("no") || str.equals(" ")) {
+            return false;
+        }
+        return true;
     }
 }
