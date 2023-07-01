@@ -18,7 +18,6 @@ public class Calculator {
             this.sign = sign;
             return false;
         } 
-        // тут должен быть еще один ретурн!
         System.out.println("введенная математическая операция не поддерживается!");
         return true;
     }
@@ -26,32 +25,32 @@ public class Calculator {
     
     // вычисления
     public void calculate() {
-    var result = 0;
-    switch (sign) {
-        case '+' :
-            result = num1 + num2;
-            break;
-        case '-' :
-            result = num1 - num2;
-            break;
-        case '*' :
-            result = num1 * num2;
-            break;
-        case '/' :
-            result = num1 / num2;
-            break;
-        case '^' :
-            result = 1;
-            for (int i = 1; i <= num2; i++) {
-                result *= num1; 
+        var result = 0;
+        switch (sign) {
+            case '+' :
+                result = num1 + num2;
+                break;
+            case '-' :
+                result = num1 - num2;
+                break;
+            case '*' :
+                result = num1 * num2;
+                break;
+            case '/' :
+                result = num1 / num2;
+                break;
+            case '^' :
+                result = 1;
+                for (int i = 1; i <= num2; i++) {
+                    result *= num1; 
+                }
+                break;
+            case '%' :
+                result = num1 % num2;
+                break;
+            default :
+                break;
             }
-            break;
-        case '%' :
-            result = num1 % num2;
-            break;
-        default :
-            break;
-        }
         System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
     }
 }
