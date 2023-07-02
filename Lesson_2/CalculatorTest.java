@@ -22,10 +22,8 @@ public class CalculatorTest {
             while (true) {
                 System.out.println("Хотите продолжить вычисления? [yes/no]: ");
                 String word = scanner.nextLine().trim().toLowerCase();
-                if (!(word.equals("yes")) || !(word.equals("no"))) {
-                    continue;
-                } else {
-                    if (isNext(word)) {
+                if (word.equals("yes") || word.equals("no")) {
+                   if (isNext(word)) {
                         System.exit(0);
                     } else if (isNext(word) == false) {
                         break;
