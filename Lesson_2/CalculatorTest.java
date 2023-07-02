@@ -22,11 +22,14 @@ public class CalculatorTest {
             while (true) {
                 System.out.println("Хотите продолжить вычисления? [yes/no]: ");
                 String word = scanner.nextLine().trim().toLowerCase();
-                if (isNext(word)) {
-                    System.exit(0);
-                } 
-                if (isNext(word) == false) {
-                    break;
+                if (!(word.equals("yes")) || !(word.equals("no"))) {
+                    continue;
+                } else {
+                    if (isNext(word)) {
+                        System.exit(0);
+                    } else if (isNext(word) == false) {
+                        break;
+                    } 
                 }
             }
         }
