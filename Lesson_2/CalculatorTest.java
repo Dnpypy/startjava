@@ -65,17 +65,14 @@ public class CalculatorTest {
     private static int checkNumber2(Scanner scanner) {
         var cycle = 0;
         var num = 0;
-        scanner = new Scanner(System.in);
         do {
             try {
                 System.out.println("Введите второе число: ");
                 num = Integer.parseInt(scanner.nextLine());
                 cycle = 0;
             } catch (NumberFormatException ex) {
-                scanner.reset();
                 cycle = 1;
             } catch (NullPointerException ex) {
-                scanner.reset();
                 cycle = 1;
             }
         }while(cycle == 1);
