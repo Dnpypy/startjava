@@ -16,13 +16,12 @@ public class Calculator {
     public boolean setSign(char sign) {
         if (sign == '+' || sign == '-' || sign == '*' || sign == '/' || sign == '^' || sign ==  '%') {
             this.sign = sign;
-            return false;
+            return true;
         } 
         System.out.println("введенная математическая операция не поддерживается!");
-        return true;
+        return false;
     }
 
-    
     // вычисления
     public void calculate() {
         var result = 0;
@@ -48,9 +47,9 @@ public class Calculator {
             case '%' :
                 result = num1 % num2;
                 break;
-            default :
+            default:
                 break;
-            }
+        }
         System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
     }
 }
