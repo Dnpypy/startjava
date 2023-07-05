@@ -20,6 +20,8 @@ public class CalculatorTest {
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("NumberFormatException");
+                } catch (StringIndexOutOfBoundsException e) {
+                    System.out.println("StringIndexOutOfBoundsException");
                 }
             }
              
