@@ -19,14 +19,12 @@ public class CalculatorTest {
                     calc.calculate();
                     break;
                 } catch (NumberFormatException e) {
-                    System.out.println("NumberFormatException");
+                    System.out.println("Ошибка вводите все заново!");
                 } catch (StringIndexOutOfBoundsException e) {
-                    System.out.println("StringIndexOutOfBoundsException");
+                    System.out.println("Ошибка вводите все заново!");
                 }
             }
              
-            
-
             do {
                 System.out.println("Хотите продолжить вычисления? [yes/no]: ");
                 option = scanner.nextLine();
