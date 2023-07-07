@@ -8,23 +8,14 @@ public class CalculatorTest {
         String option = "yes";
 
         while(!option.equals("no")) {
-            while (true) {
-                try {
-                    System.out.println("Введите первое число: ");
-                    calc.setA(Integer.parseInt(scanner.nextLine()));
-                    System.out.println("Введите знак математической операции: ");
-                    calc.setSign(scanner.nextLine().charAt(0));
-                    System.out.println("Введите второе число: ");
-                    calc.setB(Integer.parseInt(scanner.nextLine()));
-                    calc.calculate();
-                    break;
-                } catch (NumberFormatException e) {
-                    System.out.println("Ошибка вводите все заново!");
-                } catch (StringIndexOutOfBoundsException e) {
-                    System.out.println("Ошибка вводите все заново!");
-                }
-            }
-             
+            System.out.println("Введите первое число: ");
+            calc.setA(Integer.parseInt(scanner.nextLine()));
+            System.out.println("Введите знак математической операции: ");
+            calc.setSign(scanner.nextLine().charAt(0));
+            System.out.println("Введите второе число: ");
+            calc.setB(Integer.parseInt(scanner.nextLine()));
+            calc.calculate();
+                
             do {
                 System.out.println("Хотите продолжить вычисления? [yes/no]: ");
                 option = scanner.nextLine();
