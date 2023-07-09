@@ -4,11 +4,11 @@ public class Calculator {
     private int num2;
     private char sign;
     
-    public void setA(int num1) {
+    public void setNum1(int num1) {
         this.num1 = num1;
     }
 
-    public void setB(int num2) {
+    public void setNum2(int num2) {
         this.num2 = num2;
     }
 

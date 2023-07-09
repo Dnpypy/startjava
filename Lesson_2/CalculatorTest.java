@@ -9,11 +9,11 @@ public class CalculatorTest {
 
         while(!option.equals("no")) {
             System.out.println("Введите первое число: ");
-            calc.setA(Integer.parseInt(scanner.nextLine()));
+            calc.setNum1(Integer.parseInt(scanner.nextLine()));
             System.out.println("Введите знак математической операции: ");
             calc.setSign(scanner.nextLine().charAt(0));
             System.out.println("Введите второе число: ");
-            calc.setB(Integer.parseInt(scanner.nextLine()));
+            calc.setNum2(Integer.parseInt(scanner.nextLine()));
             calc.calculate();
                 
             do {
