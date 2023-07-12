@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Random;
 
 public class GuessNumberTest {
     public static void  main(String[] args) {
@@ -7,20 +6,22 @@ public class GuessNumberTest {
 
         // создание объектов, инициализация
         Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-        int computerNumber = random.nextInt(100);
-        GuessNumber guessNumber = new GuessNumber();
+        System.out.println("Введите имя первого игрока: ");
+        String name1 = scanner.nextLine();
+        Player player1 = new Player(name1);
+        System.out.println("Введите имя второго игрока: ");
+        String name2 = scanner.nextLine();
+        Player player2 = new Player(name2);
 
-        // создание игроков(игровой процесс)
-        GuessNumber guessNumPlayers = guessNumber.initPlayers(scanner);
+        GuessNumber game = new GuessNumber(player1, player2);
 
         // запуск игры
         String option = "yes";
         while(!option.equals("no")) {
             // игровой процесс
-            guessNumber.initGuessGames(scanner, computerNumber);
+            game.play();
 
-            // ввод и обработку ответа игрока о продолжении/завершении
+            // ввод и обработка ответа игрока о продолжении/завершении
             do {
                 System.out.println("Хотите продолжить игру? [yes/no]: ");
                 option = scanner.nextLine();
