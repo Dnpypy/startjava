@@ -1,4 +1,4 @@
-public class ArraysTheme {
+public class ArrayTheme {
     public static void main(String[] args) {
         reverseArray();
         multiArrayElements();
@@ -97,6 +97,7 @@ public class ArraysTheme {
             bubbleSort(arr);
             for(int i = 0; i < length - 1; i++) {
                 if (contains(arr, arr[i])){
+                    count = 1;
                     arr[i] = (int)(60 + Math.random() * 100);
                 } 
             }
