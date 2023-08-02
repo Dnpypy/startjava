@@ -14,14 +14,12 @@ public class ArrayTheme {
         printArray(reverseArray);
         var length = reverseArray.length;
         for(int i = 0; i < length; i++) {
-            length--;
             var temp = reverseArray[i];
-            reverseArray[i] = reverseArray[length];
+            reverseArray[i] = reverseArray[--length];
             reverseArray[length] = temp;
         }
 
-        System.out.println();
-        System.out.print("После реверса: ");
+        System.out.print("\nПосле реверса: ");
         printArray(reverseArray);
     }
 
@@ -52,8 +50,9 @@ public class ArrayTheme {
         
         var averageIndex = length / 2;
         var zeroIndex = 0;
+        var average = realNumbers[averageIndex];
         for(int i = 0; i < length; i++) {
-            if (realNumbers[averageIndex] < realNumbers[i]) {
+            if (average < realNumbers[i]) {
                 realNumbers[i] = 0.0f;
                 zeroIndex++;
             }
@@ -65,16 +64,16 @@ public class ArrayTheme {
 
     public static void outputAlphabet() {
         System.out.println("\n4.Вывод алфавита лесенкой: ");
-        char[] charArray = new char[26];
-        var z = 0;
-        var length = charArray.length; 
-        for(char ch = 'Z'; ch >= 'A'; ch--) {
-            charArray[z++] = ch;
+        char[] alphabet = new char[26];
+
+        var length = alphabet.length; 
+        for(char ch = 0; ch < length; ch++) {
+            alphabet[ch] = (char) ('A' + ch);
         }
         
-        for(int i = 1; i <= length - 1; i++) {
-            for(int y = 1; y <= i; y++) {
-                System.out.print(charArray[y]);
+        for(int i = 0; i <= length - 1; i++) {
+            for(int y = 0; y <= i; y++) {
+                System.out.print(alphabet[y]);
             }
             System.out.println();
         }
@@ -82,19 +81,15 @@ public class ArrayTheme {
 
     public static void addArrayUnicElemenets() {
         System.out.println("\n5.Заполнение массива уникальными числами: ");
-        int[] uniqueArray = new int[30];
-        var length = uniqueArray.length;
+        int[] uniqueNumbers = new int[30];
+        var length = uniqueNumbers.length;
         
-        for(int i = 0; i < length; i++) {
-            uniqueArray[i] = (int)(60 + Math.random() * 100);
-        }
-
         var count = 0;
         while (true) {
             count = 0;
             for(int i = 0; i < length - 1; i++) {
-                if (contains(uniqueArray, uniqueArray[i])){
-                    uniqueArray[i] = (int)(60 + Math.random() * 100);
+                if (contains(uniqueNumbers, uniqueNumbers[i])) {
+                    uniqueNumbers[i] = (int)(31 + Math.random() * 69);
                 } 
             }
             if (count == 0) {
@@ -102,9 +97,9 @@ public class ArrayTheme {
             }
             
         }
-        bubbleSort(uniqueArray);
+        bubbleSort(uniqueNumbers);
         for(int i = 0; i < length; i++) {
-            System.out.print(i == 10 || i == 20 ? uniqueArray[i] + "\n": uniqueArray[i] + " ");
+            System.out.print(i == 10 || i == 20 ? uniqueNumbers[i] + "\n": uniqueNumbers[i] + " ");
         }
     }
 
