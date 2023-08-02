@@ -12,9 +12,9 @@ public class ArrayTheme {
         int[] reverseArray = {1, 7, 4, 5, 2, 6, 3};
         System.out.print("   До реверса: ");
         printArray(reverseArray);
-        var length = reverseArray.length;
+        int length = reverseArray.length;
         for(int i = 0; i < length; i++) {
-            var temp = reverseArray[i];
+            int temp = reverseArray[i];
             reverseArray[i] = reverseArray[--length];
             reverseArray[length] = temp;
         }
@@ -26,8 +26,8 @@ public class ArrayTheme {
     public static void multiplyArrayElements() {
         System.out.println("\n\n2.Произведение элементов массива: ");
         int[] multipliers = new int[9];
-        var multi = 1;
-        var length = multipliers.length;
+        int multi = 1;
+        int length = multipliers.length;
         for (int i = 1; i < length; i++) {
             multipliers[i] = i; 
             multi *= multipliers[i];
@@ -40,7 +40,7 @@ public class ArrayTheme {
     public static void deleteArrayElements() {
         System.out.println("\n\n3.Удаление элементов массива: ");
         float[] realNumbers = new float[15];
-        var length = realNumbers.length;
+        int length = realNumbers.length;
         for(int i = 0; i < length; i++) {
             realNumbers[i] = (float) Math.random();
         }
@@ -48,9 +48,9 @@ public class ArrayTheme {
         System.out.println("исходный массив: ");
         printFloatArray(realNumbers);
         
-        var averageIndex = length / 2;
-        var zeroIndex = 0;
-        var average = realNumbers[averageIndex];
+        int averageIndex = length / 2;
+        int zeroIndex = 0;
+        float average = realNumbers[averageIndex];
         for(int i = 0; i < length; i++) {
             if (average < realNumbers[i]) {
                 realNumbers[i] = 0.0f;
@@ -66,7 +66,7 @@ public class ArrayTheme {
         System.out.println("\n4.Вывод алфавита лесенкой: ");
         char[] alphabet = new char[26];
 
-        var length = alphabet.length; 
+        int length = alphabet.length; 
         for(char ch = 0; ch < length; ch++) {
             alphabet[ch] = (char) ('A' + ch);
         }
@@ -82,9 +82,9 @@ public class ArrayTheme {
     public static void addArrayUnicElemenets() {
         System.out.println("\n5.Заполнение массива уникальными числами: ");
         int[] uniqueNumbers = new int[30];
-        var length = uniqueNumbers.length;
+        int length = uniqueNumbers.length;
         
-        var count = 0;
+        int count = 0;
         while (true) {
             count = 0;
             for(int i = 0; i < length - 1; i++) {
