@@ -85,12 +85,16 @@ public class ArrayTheme {
         int length = uniqueNumbers.length;
         
         int count = 0;
+        int min = 60;
+        int max = 99;
+        
         while (true) {
             count = 0;
-            for(int i = 0; i < length - 1; i++) {
-                if (contains(uniqueNumbers, uniqueNumbers[i])) {
-                    uniqueNumbers[i] = (int)(31 + Math.random() * 69);
-                } 
+            for(int i = 0; i < length; i++) {
+                int temp = (int) Math.floor(Math.random() * (max - min + 1) + min);
+                if (!contains(uniqueNumbers, temp)) {
+                    uniqueNumbers[i] = temp;
+                }
             }
             if (count == 0) {
                 break;
@@ -99,7 +103,13 @@ public class ArrayTheme {
         }
         bubbleSort(uniqueNumbers);
         for(int i = 0; i < length; i++) {
-            System.out.print(i == 10 || i == 20 ? uniqueNumbers[i] + "\n": uniqueNumbers[i] + " ");
+            if (i == 9 || i == 19) {
+                System.out.printf("%2d", uniqueNumbers[i]);
+                System.out.println();
+            } else {
+                System.out.printf("%2d ", uniqueNumbers[i]);
+                System.out.print(" ");
+            }
         }
     }
 
