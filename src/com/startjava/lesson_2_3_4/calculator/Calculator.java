@@ -34,44 +34,9 @@ public class Calculator {
             this.sign = sign;
             return true;
         } 
-        this.sign = sign; // любой знак записывается и для вывода ошибка нужно
+        this.sign = sign; // любой знак записывается и для вывода ошибок нужен
         return false;
     }
-
-    // вычисления
-    // public void calculate() {
-    //     double result = 0.0;
-    //     switch (sign) {
-    //         case '+' :
-    //             result = num1 + num2;
-    //             System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
-    //             break;
-    //             return result;
-    //         case '-' :
-    //             result = num1 - num2;
-    //             System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
-    //             break;
-    //         case '*' :
-    //             result = num1 * num2;
-    //             System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
-    //             break;
-    //         case '/' :
-    //             result = num1 / num2;
-    //             System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
-    //             break;
-    //         case '^' :
-    //             result = Math.pow(num1, num2);
-    //             System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
-    //             break;
-    //         case '%' :
-    //             result = num1 % num2;
-    //             System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
-    //             break;
-    //         default:
-    //             System.out.println("Ошибка: знак " + sign + " не поддерживается");
-    //             break;
-    //     }
-    // }
 
     // вычисления
     public double calculate() {

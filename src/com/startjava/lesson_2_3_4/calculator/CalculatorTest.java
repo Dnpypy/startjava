@@ -43,10 +43,4 @@ public class CalculatorTest {
             array[i] = "";
         }
     }
-
-    private static void printArray(String[] array) {
-        for(String i : array) { 
-            System.out.print(i + " ");
-        }
-    }
 }
