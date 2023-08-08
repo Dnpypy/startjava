@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3_4.array;
+
 public class ArrayTheme {
     public static void main(String[] args) {
         reverseArray();
@@ -83,33 +85,30 @@ public class ArrayTheme {
         System.out.println("\n5.Заполнение массива уникальными числами: ");
         int[] uniqueNumbers = new int[30];
         int length = uniqueNumbers.length;
-        
-        int count = 0;
         int min = 60;
         int max = 99;
         
-        while (true) {
-            count = 0;
-            for(int i = 0; i < length; i++) {
-                int temp = (int) Math.floor(Math.random() * (max - min + 1) + min);
-                if (!contains(uniqueNumbers, temp)) {
-                    uniqueNumbers[i] = temp;
+        uniqueNumbers[0] = (int) Math.floor(Math.random() * (max - min + 1) + min);
+        for (int i = 1; i < length; i++) {
+            int randomNum = (int) Math.floor(Math.random() * (max - min + 1) + min);
+            for (int j = 0; j < i; j++) {
+                if (randomNum == uniqueNumbers[j]) {
+                    randomNum = -1;
+                    i--;
+                    break;
                 }
             }
-            if (count == 0) {
-                break;
+            if (randomNum != -1) {
+                uniqueNumbers[i] = randomNum;
             }
-            
         }
         bubbleSort(uniqueNumbers);
-        for(int i = 0; i < length; i++) {
-            if (i == 9 || i == 19) {
-                System.out.printf("%2d", uniqueNumbers[i]);
-                System.out.println();
-            } else {
-                System.out.printf("%2d ", uniqueNumbers[i]);
-                System.out.print(" ");
-            }
+        print(uniqueNumbers);
+    }
+
+    private static void print(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(i % 10 == 0 ? "\n" : array[i] + " ");
         }
     }
 
