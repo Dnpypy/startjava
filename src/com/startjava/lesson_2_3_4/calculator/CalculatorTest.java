@@ -11,7 +11,7 @@ public class CalculatorTest {
         String option = "yes";
 
         do {
-            if (!"no".equals(option)) {
+            if ("yes".equals(option)) {
                 System.out.println("Введите математическое выражение : 2 ^ 10");
                 String[] expression = calc.splittingArray(scanner);
                 double result = calc.calculate(expression);
