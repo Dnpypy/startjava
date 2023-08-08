@@ -2,7 +2,6 @@ package com.startjava.lesson_2_3_4.calculator;
 
 import java.lang.Math;
 import java.util.Scanner;
-import java.text.DecimalFormat;
 
 public class Calculator {
 
@@ -15,14 +14,16 @@ public class Calculator {
         this.num1 = num1;
     }
 
+    public double getNum1() {
+        return num1;
+    }
+
     public void setNum2(double num2) {
         this.num2 = num2;
     }
 
-    // помещаю в массив
-    public String[] splittingArray(Scanner scanner) {
-        expression = scanner.nextLine().split(" ");
-        return expression;
+    public double getNum2() {
+        return num2;
     }
 
     // проверка математической операции
@@ -35,14 +36,30 @@ public class Calculator {
         return false;
     }
 
+    public char getSign() {
+        return sign;
+    }
+
+    // помещаю в массив
+    public String[] splittingArray(Scanner scanner) {
+        expression = scanner.nextLine().split(" ");
+        return expression;
+    }
+
+    
+
     // вычисления
-    public double calculate() {
+    public double calculate(String[] array) {
+        setNum1(Double.parseDouble(array[0]));
+        setSign(array[1].charAt(0));
+        setNum2(Double.parseDouble(array[2]));
+
         double result = 0.0;
         switch (sign) {
             case '+': result = num1 + num2; break;
             case '-': result = num1 - num2; break;
             case '*': result = num1 * num2; break;
-            case '/': result = num1 * num2; break;
+            case '/': result = num1 / num2; break;
             case '^': result = Math.pow(num1, num2); break;
             case '%': result = num1 % num2; break;    
             default: 
@@ -51,20 +68,6 @@ public class Calculator {
                 break;
         }
         return result;
-    }
-
-    public void printResult(double result) {
-        if (!(result == -1.0)) {
-            if (result % 1 == 0) {
-                System.out.println(num1 + " " + sign + " " + num2 + " = " + (int)result);
-                System.out.println("Число является целым.");
-            } else {
-                DecimalFormat format = new DecimalFormat("0.00"); // 3 знака после запятой +
-                System.out.println(num1 + " " + sign + " " + num2 + 
-                " = " + format.format(result) + 0);
-                System.out.println("Число не является целым.");
-            }
-        } 
     }
 }
 

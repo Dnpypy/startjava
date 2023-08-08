@@ -1,6 +1,7 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class CalculatorTest {
     public static void  main(String[] args) {
@@ -9,29 +10,31 @@ public class CalculatorTest {
         Scanner scanner = new Scanner(System.in);
         String option = "yes";
 
-        while(!option.equals("no")) {
-            System.out.println("Введите математическое выражение : 2 ^ 10");
-            String[] expression = calc.splittingArray(scanner);
-            calc.setNum1(Double.parseDouble(expression[0]));
-            System.out.println("expression[1].charAt(0) : " + expression[1].charAt(0));
-            calc.setSign(expression[1].charAt(0));
-            calc.setNum2(Double.parseDouble(expression[2]));
-            double result = calc.calculate();
-            calc.printResult(result);
-            clearArray(expression);
-            calc.setSign(' ');
+        do {
+            if (!"no".equals(option)) {
+                System.out.println("Введите математическое выражение : 2 ^ 10");
+                String[] expression = calc.splittingArray(scanner);
+                double result = calc.calculate(expression);
+                printResult(result, calc);
+            }
             
             System.out.println("Хотите продолжить вычисления? [yes/no]: ");
             option = scanner.nextLine();
-            if (!option.equals("yes")) {
-                break;
-            }
-        }
+            
+        } while(!"no".equals(option));
     }
 
-    private static void clearArray(String[] array) {
-        for (int i = 0; i < array.length; i++) {
-            array[i] = "";
-        }
+    public static void printResult(double result, Calculator calc) {
+        if (!(result == -1.0)) {
+            if (result % 1 == 0) {
+                System.out.println(calc.getNum1() + " " + calc.getSign() + " " + calc.getNum2() + " = " + (int)result);
+                System.out.println("Число является целым.");
+            } else {
+                DecimalFormat format = new DecimalFormat("0.00"); // 3 знака после запятой +
+                System.out.println(calc.getNum1() + " " + calc.getSign() + " " + calc.getNum2() + 
+                " = " + format.format(result));
+                System.out.println("Число не является целым.");
+            }
+        } 
     }
 }
