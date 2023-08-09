@@ -8,7 +8,7 @@ public class Calculator {
     private double num1;
     private double num2;
     private char sign;
-    private String[] expression;
+    public static String[] expression;
     
     public void setNum1(double num1) {
         this.num1 = num1;
@@ -26,6 +26,14 @@ public class Calculator {
         return num2;
     }
 
+    public void setExpression(String[] array) {
+        this.expression = expression;
+    }
+
+    public String[] getExpression() {
+        return expression;
+    }
+
     // проверка математической операции
     public boolean setSign(char sign) {
         if (sign == '+' || sign == '-' || sign == '*' || sign == '/' || sign == '^' || sign ==  '%') {
@@ -40,19 +48,12 @@ public class Calculator {
         return sign;
     }
 
-    // помещаю в массив
-    public String[] splittingArray(Scanner scanner) {
-        expression = scanner.nextLine().split(" ");
-        return expression;
-    }
-
-    
-
     // вычисления
-    public double calculate(String[] array) {
-        setNum1(Double.parseDouble(array[0]));
-        setSign(array[1].charAt(0));
-        setNum2(Double.parseDouble(array[2]));
+    public double calculate(Scanner scanner) {
+        expression = scanner.nextLine().split(" ");
+        setNum1(Double.parseDouble(expression[0]));
+        setSign(expression[1].charAt(0));
+        setNum2(Double.parseDouble(expression[2]));
 
         double result = 0.0;
         switch (sign) {
@@ -64,7 +65,7 @@ public class Calculator {
             case '%': result = num1 % num2; break;    
             default: 
                 System.out.println("Ошибка: знак " + sign + " не поддерживается");
-                result = -1.0;
+                result = Double.MIN_VALUE;
                 break;
         }
         return result;
