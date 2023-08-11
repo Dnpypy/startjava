@@ -8,8 +8,7 @@ public class Calculator {
     private double num1;
     private double num2;
     private char sign;
-    public static String[] expression;
-    
+   
     public void setNum1(double num1) {
         this.num1 = num1;
     }
@@ -26,22 +25,12 @@ public class Calculator {
         return num2;
     }
 
-    public void setExpression(String[] array) {
-        this.expression = expression;
-    }
-
-    public String[] getExpression() {
-        return expression;
-    }
-
     // проверка математической операции
     public void setSign(char sign) {
         if (sign == '+' || sign == '-' || sign == '*' || sign == '/' || sign == '^' || sign ==  '%') {
             this.sign = sign;
-           // return true;
         } 
         this.sign = sign; // любой знак записывается и для вывода ошибок нужен
-        //return false;
     }
 
     public char getSign() {
@@ -50,13 +39,10 @@ public class Calculator {
 
     // вычисления
     public double calculate(String[] array) {
-        //System.out.println(array);
-        //System.out.println(Double.parseDouble(array[0]));
         setNum1(Double.parseDouble(array[0]));
         setSign(array[1].charAt(0));
         setNum2(Double.parseDouble(array[2]));
 
-        //double result = 0.0;
         System.out.println("sign : " + sign);
         switch (sign) {
             case '+':  return num1 + num2; //result = num1 + num2;  break;
@@ -70,7 +56,6 @@ public class Calculator {
                 return Double.MIN_VALUE;
                 //break;
         }
-        //return Double.MIN_VALUE;
     }
 }
 
