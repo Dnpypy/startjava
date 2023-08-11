@@ -45,16 +45,15 @@ public class Calculator {
 
         System.out.println("sign : " + sign);
         switch (sign) {
-            case '+':  return num1 + num2; //result = num1 + num2;  break;
-            case '-':  return num1 - num2; //result = num1 - num2; break;
-            case '*':  return num1 * num2; //result = num1 * num2; break;
-            case '/':  return num1 / num2; //result = num1 / num2; break;
-            case '^':  return Math.pow(num1, num2); //result = Math.pow(num1, num2); break;
-            case '%':  return num1 % num2; // result = num1 % num2; break;   
+            case '+':  return num1 + num2; 
+            case '-':  return num1 - num2; 
+            case '*':  return num1 * num2; 
+            case '/':  return num1 / num2; 
+            case '^':  return Math.pow(num1, num2); 
+            case '%':  return num1 % num2; 
             default: 
                 System.out.println("Ошибка: знак " + sign + " не поддерживается");
                 return Double.MIN_VALUE;
-                //break;
         }
     }
 }
