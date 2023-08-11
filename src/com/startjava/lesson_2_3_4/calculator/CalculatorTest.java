@@ -15,7 +15,9 @@ public class CalculatorTest {
         do {
             if ("yes".equals(option)) {
                 System.out.println("Введите математическое выражение : 2 ^ 10");
-                double result = calc.calculate(scanner);
+                expression = scanner.nextLine().split(" ");
+                System.out.println(expression);
+                double result = calc.calculate(expression);
                 printResult(result, calc);
             }
             
@@ -27,7 +29,7 @@ public class CalculatorTest {
     public static void printResult(double result, Calculator calc) {
         if (result != Double.MIN_VALUE) {
             if (result % 1 == 0) {
-                System.out.println(expression[0] + " " + expression[1] + " " + expression[2] + " = " + (int)result);
+                System.out.println(expression[0] + " " + expression[1] + " " + expression[2] + " = " + (int) result);
             } else {
                 DecimalFormat format = new DecimalFormat("0.00"); // 3 знака после запятой +
                 System.out.println(calc.getNum1() + " " + calc.getSign() + " " + calc.getNum2() + 

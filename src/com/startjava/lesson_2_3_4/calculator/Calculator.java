@@ -35,13 +35,13 @@ public class Calculator {
     }
 
     // проверка математической операции
-    public boolean setSign(char sign) {
+    public void setSign(char sign) {
         if (sign == '+' || sign == '-' || sign == '*' || sign == '/' || sign == '^' || sign ==  '%') {
             this.sign = sign;
-            return true;
+           // return true;
         } 
         this.sign = sign; // любой знак записывается и для вывода ошибок нужен
-        return false;
+        //return false;
     }
 
     public char getSign() {
@@ -49,26 +49,28 @@ public class Calculator {
     }
 
     // вычисления
-    public double calculate(Scanner scanner) {
-        expression = scanner.nextLine().split(" ");
-        setNum1(Double.parseDouble(expression[0]));
-        setSign(expression[1].charAt(0));
-        setNum2(Double.parseDouble(expression[2]));
+    public double calculate(String[] array) {
+        //System.out.println(array);
+        //System.out.println(Double.parseDouble(array[0]));
+        setNum1(Double.parseDouble(array[0]));
+        setSign(array[1].charAt(0));
+        setNum2(Double.parseDouble(array[2]));
 
-        double result = 0.0;
+        //double result = 0.0;
+        System.out.println("sign : " + sign);
         switch (sign) {
-            case '+': result = num1 + num2; break;
-            case '-': result = num1 - num2; break;
-            case '*': result = num1 * num2; break;
-            case '/': result = num1 / num2; break;
-            case '^': result = Math.pow(num1, num2); break;
-            case '%': result = num1 % num2; break;    
+            case '+':  return num1 + num2; //result = num1 + num2;  break;
+            case '-':  return num1 - num2; //result = num1 - num2; break;
+            case '*':  return num1 * num2; //result = num1 * num2; break;
+            case '/':  return num1 / num2; //result = num1 / num2; break;
+            case '^':  return Math.pow(num1, num2); //result = Math.pow(num1, num2); break;
+            case '%':  return num1 % num2; // result = num1 % num2; break;   
             default: 
                 System.out.println("Ошибка: знак " + sign + " не поддерживается");
-                result = Double.MIN_VALUE;
-                break;
+                return Double.MIN_VALUE;
+                //break;
         }
-        return result;
+        //return Double.MIN_VALUE;
     }
 }
 
