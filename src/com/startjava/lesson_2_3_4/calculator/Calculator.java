@@ -5,14 +5,11 @@ import java.lang.Math;
 public class Calculator {
 
     // вычисления
-    public double calculate(String exp) {
-        double num1;
-        double num2;
-        char sign;
-        String[] tempArray = exp.split(" ");
-        num1 = Double.parseDouble(tempArray[0]);
-        sign = tempArray[1].charAt(0);
-        num2 = Double.parseDouble(tempArray[2]);
+    public double calculate(String expression) {
+        String[] partsExpression = expression.split(" ");
+        double num1 = Double.parseDouble(partsExpression[0]);
+        char sign = partsExpression[1].charAt(0);
+        double num2 = Double.parseDouble(partsExpression[2]);
         
         switch (sign) {
             case '+': return num1 + num2;
