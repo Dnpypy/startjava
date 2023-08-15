@@ -5,7 +5,7 @@ import java.lang.Math;
 public class Calculator {
 
     // вычисления
-    public double calculate(String expression) {
+    public static double calculate(String expression) {
         String[] partsExpression = expression.split(" ");
         double num1 = Double.parseDouble(partsExpression[0]);
         char sign = partsExpression[1].charAt(0);
