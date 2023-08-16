@@ -13,11 +13,8 @@ public class CalculatorTest {
                 if ("yes".equals(option)) {
                     System.out.println("Введите математическое выражение, пример : 2 ^ 10");
                     String expression = scanner.nextLine();// введенное мат.выражение
-                    if (expression.length() < 15) { // длина вводимого мат. выражения
-                        double result = Calculator.calculate(expression);
-                        printResult(result, expression);
-                    } 
-                    
+                    double result = Calculator.calculate(expression);
+                    printResult(result, expression);
                 }
                 System.out.println("Хотите продолжить вычисления? [yes/no]: ");
                 option = scanner.nextLine();
@@ -34,7 +31,7 @@ public class CalculatorTest {
             if (result % 1 == 0) {
                 System.out.println(expression + " = " + (int) result);
             } else {
-                DecimalFormat format = new DecimalFormat("0.00"); // 3 знака после запятой +
+                DecimalFormat format = new DecimalFormat("0.000"); // 3 знака после запятой +
                 System.out.println(expression + " = " + format.format(result));
             }
         } 

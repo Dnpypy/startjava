@@ -6,6 +6,10 @@ public class Calculator {
 
     // вычисления
     public static double calculate(String expression) {
+        if (!(expression.length() < 15)) { // длина вводимого мат. выражения
+            System.out.println("Длина мат. выражения превышает допустимого!");
+            return 0.0;
+        }
         String[] partsExpression = expression.split(" ");
         double num1 = Double.parseDouble(partsExpression[0]);
         char sign = partsExpression[1].charAt(0);
