@@ -31,7 +31,7 @@ public class CalculatorTest {
             if (result % 1 == 0) {
                 System.out.println(expression + " = " + (int) result);
             } else {
-                DecimalFormat format = new DecimalFormat("0.000"); // 3 знака после запятой +
+                DecimalFormat format = new DecimalFormat("0.000"); // 3 знака после запятой 
                 System.out.println(expression + " = " + format.format(result));
             }
         } 

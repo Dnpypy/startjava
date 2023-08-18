@@ -4,28 +4,39 @@ import java.lang.Math;
 
 public class Calculator {
 
-    // вычисления
     public static double calculate(String expression) {
-        if (!(expression.length() < 15)) { // длина вводимого мат. выражения
-            System.out.println("Длина мат. выражения превышает допустимого!");
-            return 0.0;
+        try {
+            String[] partsExpression = expression.split(" ");
+            if (partsExpression.length > 3) { // проверка длины массива
+                throw new RuntimeException("Длина мат. выражения превышает допустимого!");
+            }
+            int num1, num2 = 0;
+            if (Integer.parseInt(partsExpression[0]) > 0) {
+                num1 = Integer.parseInt(partsExpression[0]);
+            } else {
+                throw new RuntimeException("Число меньше нуля!");
+            }
+            char sign = partsExpression[1].charAt(0);
+            if (Integer.parseInt(partsExpression[2]) > 0) {
+                num2 = Integer.parseInt(partsExpression[2]);
+            } else {
+                throw new RuntimeException("Число меньше нуля!");
+            }
+            
+            switch (sign) {
+                case '+': return num1 + num2;
+                case '-': return num1 - num2;
+                case '*': return num1 * num2; 
+                case '/': return num1 / num2; 
+                case '^': return Math.pow(num1, num2); 
+                case '%': return num1 % num2; 
+                default: 
+                    throw new RuntimeException("Ошибка: знак " + sign + " не поддерживается");
+            }
+        } catch (RuntimeException ex) {
+            System.out.println(ex.getMessage());
         }
-        String[] partsExpression = expression.split(" ");
-        double num1 = Double.parseDouble(partsExpression[0]);
-        char sign = partsExpression[1].charAt(0);
-        double num2 = Double.parseDouble(partsExpression[2]);
-        
-        switch (sign) {
-            case '+': return num1 + num2;
-            case '-': return num1 - num2;
-            case '*': return num1 * num2; 
-            case '/': return num1 / num2; 
-            case '^': return Math.pow(num1, num2); 
-            case '%': return num1 % num2; 
-            default: 
-                System.out.println("Ошибка: знак " + sign + " не поддерживается");
-                return Double.MIN_VALUE;
-        }
+        return 0;
     }
 }
 
