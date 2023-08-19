@@ -48,7 +48,7 @@ public class Calculator {
 
     public static boolean isNegative(int num) {
         try {
-            if (num.doubleValue() <= 0) {
+            if (num <= 0) {
                 throw new RuntimeException("Аргументы должны быть положительными");
             }
             return true;
