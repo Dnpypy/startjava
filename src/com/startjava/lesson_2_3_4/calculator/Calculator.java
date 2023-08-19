@@ -1,42 +1,53 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 import java.lang.Math;
+import java.math.BigInteger;
 
 public class Calculator {
 
+    private static int num1;
+    private static int num2;
+    private static char sign;
+
     public static double calculate(String expression) {
+        
+        initial(expression);
+        if (isNegative(num1) && isNegative(num2)) {
+            return switch (sign) {
+                case '+' -> num1 + num2;
+                case '-' -> num1 - num2;
+                case '*' -> num1 * num2;
+                case '/' -> num1 / num2;
+                case '^' -> (double) Math.pow(num1, num2);
+                case '%' -> num1 % num2;
+                default -> {
+                    throw new RuntimeException("Ошибка: знак " + sign + " не поддерживается");
+                }
+            };
+        }
+        return 0.0;
+    }
+
+    public static void initial(String expression) {
+        String[] partsExpression = expression.split(" ");
         try {
-            String[] partsExpression = expression.split(" ");
             if (partsExpression.length > 3) { // проверка длины массива
                 throw new RuntimeException("Длина мат. выражения превышает допустимого!");
             }
-            int num1, num2 = 0;
-            if (Integer.parseInt(partsExpression[0]) > 0) {
-                num1 = Integer.parseInt(partsExpression[0]);
-            } else {
+            if ((Integer.parseInt(partsExpression[0]) < 0) || (Integer.parseInt(partsExpression[2]) < 0)) {
                 throw new RuntimeException("Число меньше нуля!");
             }
-            char sign = partsExpression[1].charAt(0);
-            if (Integer.parseInt(partsExpression[2]) > 0) {
-                num2 = Integer.parseInt(partsExpression[2]);
-            } else {
-                throw new RuntimeException("Число меньше нуля!");
-            }
-            
-            switch (sign) {
-                case '+': return num1 + num2;
-                case '-': return num1 - num2;
-                case '*': return num1 * num2; 
-                case '/': return num1 / num2; 
-                case '^': return Math.pow(num1, num2); 
-                case '%': return num1 % num2; 
-                default: 
-                    throw new RuntimeException("Ошибка: знак " + sign + " не поддерживается");
-            }
+            num1 = Integer.parseInt(partsExpression[0]);
+            num2 = Integer.parseInt(partsExpression[2]);
+            sign = partsExpression[1].charAt(0);
         } catch (RuntimeException ex) {
             System.out.println(ex.getMessage());
         }
-        return 0;
+        
+    }
+
+    public static <T extends Number> boolean isNegative(T num) {
+        return num.doubleValue() < 0;
     }
 }
 
