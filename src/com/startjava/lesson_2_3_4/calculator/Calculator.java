@@ -46,7 +46,7 @@ public class Calculator {
         
     }
 
-    public static <T extends Number> boolean isNegative(T num) {
+    public static boolean isNegative(int num) {
         try {
             if (num.doubleValue() <= 0) {
                 throw new RuntimeException("Аргументы должны быть положительными");
