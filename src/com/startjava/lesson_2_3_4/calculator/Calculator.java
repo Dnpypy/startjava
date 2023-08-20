@@ -1,7 +1,6 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 import java.lang.Math;
-import java.math.BigInteger;
 
 public class Calculator {
 
@@ -10,7 +9,6 @@ public class Calculator {
     private static char sign;
 
     public static double calculate(String expression) {
-        
         initial(expression);
         if (isNegative(num1) && isNegative(num2)) {
             return switch (sign) {
@@ -30,20 +28,15 @@ public class Calculator {
 
     public static void initial(String expression) {
         String[] partsExpression = expression.split(" ");
-        try {
-            if (partsExpression.length > 3) { // проверка длины массива
-                throw new RuntimeException("Длина мат. выражения превышает допустимого!");
-            }
-            if ((Integer.parseInt(partsExpression[0]) < 0) || (Integer.parseInt(partsExpression[2]) < 0)) {
-                throw new RuntimeException("Число меньше нуля!");
-            }
-            num1 = Integer.parseInt(partsExpression[0]);
-            num2 = Integer.parseInt(partsExpression[2]);
-            sign = partsExpression[1].charAt(0);
-        } catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
+        if (partsExpression.length > 3) { // проверка длины массива
+            throw new RuntimeException("Длина мат. выражения превышает допустимого!");
         }
-        
+        if ((Integer.parseInt(partsExpression[0]) < 0) || (Integer.parseInt(partsExpression[2]) < 0)) {
+            throw new RuntimeException("Число меньше нуля!");
+        }
+        num1 = Integer.parseInt(partsExpression[0]);
+        num2 = Integer.parseInt(partsExpression[2]);
+        sign = partsExpression[1].charAt(0);
     }
 
     public static boolean isNegative(int num) {

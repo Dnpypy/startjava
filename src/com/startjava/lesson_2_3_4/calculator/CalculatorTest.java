@@ -22,18 +22,18 @@ public class CalculatorTest {
                 System.out.println("Введите число!");
             } catch (ArrayIndexOutOfBoundsException ex) {
                 System.out.println("Введите два числа и математический знак!");
+            } catch (RuntimeException ex) {
+                System.out.println(ex.getMessage());
             }
         } while(!"no".equals(option));
     }
 
     public static void printResult(double result, String expression) {
-        if (result != Double.MIN_VALUE && result > 0) {
-            if (result % 1 == 0) {
-                System.out.println(expression + " = " + (int) result);
-            } else {
-                DecimalFormat format = new DecimalFormat("0.000"); // 3 знака после запятой 
-                System.out.println(expression + " = " + format.format(result));
-            }
-        } 
+        if (result % 1 == 0) {
+            System.out.println(expression + " = " + (int) result);
+        } else {
+            DecimalFormat form = new DecimalFormat("0.000"); // 3 знака после запятой 
+            System.out.println(expression + " = " + form.format(result));
+        }
     }
 }
