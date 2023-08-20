@@ -15,13 +15,10 @@ public class Calculator {
                 case '+' -> num1 + num2;
                 case '-' -> num1 - num2;
                 case '*' -> num1 * num2;
-                case '/' -> num1 / num2;
-                case '^' -> (double) Math.pow(num1, num2);
+                case '/' -> (double) num1 / num2;
+                case '^' -> Math.pow(num1, num2);
                 case '%' -> num1 % num2;
-                default -> {
-                    System.out.println("Введённая математическая операция не поддерживается");
-                    yield 0;
-                }
+                default -> throw new RuntimeException("Введённая математическая операция не поддерживается");
             };
         }
         return 0;
