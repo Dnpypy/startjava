@@ -5,11 +5,12 @@ import java.text.DecimalFormat;
 
 public class CalculatorTest {
     public static void  main(String[] args) {
-        System.out.println("\nКалькулятор : \n");
         Scanner scanner = new Scanner(System.in);
         String option = "yes";
+        System.out.println("Старт калькулятора!");
         do {
             try {
+
                 if ("yes".equals(option)) {
                     System.out.println("Введите математическое выражение, пример : 2 ^ 10");
                     String expression = scanner.nextLine();// введенное мат.выражение
@@ -18,22 +19,17 @@ public class CalculatorTest {
                 }
                 System.out.println("Хотите продолжить вычисления? [yes/no]: ");
                 option = scanner.nextLine();
-            } catch (NumberFormatException ex) {
-                System.out.println("Введите число!");
             } catch (ArrayIndexOutOfBoundsException ex) {
                 System.out.println("Введите два числа и математический знак!");
             } catch (RuntimeException ex) {
-                System.out.println(ex.getMessage());
+                System.out.println("!!!" + ex.getMessage());
             }
         } while(!"no".equals(option));
+        System.out.println("Калькулятор выключается!");
     }
 
     public static void printResult(double result, String expression) {
-        if (result % 1 == 0) {
-            System.out.println(expression + " = " + (int) result);
-        } else {
-            DecimalFormat form = new DecimalFormat("0.000"); // 3 знака после запятой 
-            System.out.println(expression + " = " + form.format(result));
-        }
+        DecimalFormat form = new DecimalFormat("0.000"); // 3 знака после запятой 
+        System.out.println(result % 1 == 0 ? "Результат : " + (int) result : "Результат : " + form.format(result));
     }
 }
