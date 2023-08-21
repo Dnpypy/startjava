@@ -18,8 +18,6 @@ public class CalculatorTest {
                 }
                 System.out.println("Хотите продолжить вычисления? [yes/no]: ");
                 option = scanner.nextLine();
-            } catch (ArrayIndexOutOfBoundsException ex) {
-                System.out.println("Введите два числа и математический знак!"); // когда число знак пустота
             } catch (RuntimeException ex) {
                 System.out.println("!!!" + ex.getMessage());
             }

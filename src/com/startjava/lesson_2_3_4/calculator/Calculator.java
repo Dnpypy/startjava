@@ -27,15 +27,11 @@ public class Calculator {
     public static void initial(String expression) {
         String[] partsExpression = expression.split(" ");
         if (partsExpression.length > 3) { // проверка длины массива
-            throw new RuntimeException("Длина мат. выражения превышает допустимого!");
+            throw new RuntimeException("Длина мат. выражения превышает допустимого! 2 + 2 2");
         }
-        try {
-            num1 = Integer.parseInt(partsExpression[0]);
-            num2 = Integer.parseInt(partsExpression[2]);
-            sign = partsExpression[1].charAt(0);
-        } catch (NumberFormatException ex) {
-            throw new RuntimeException("Аргументы должны быть целыми");
-        }
+        num1 = Integer.parseInt(partsExpression[0]);
+        num2 = Integer.parseInt(partsExpression[2]);
+        sign = partsExpression[1].charAt(0);
     }
 
     public static boolean isNegative(int num) {
