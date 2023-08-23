@@ -16,18 +16,19 @@ public class CalculatorTest {
                     double result = Calculator.calculate(expression);
                     printResult(result);
                 }
-                System.out.println("Хотите продолжить вычисления? [yes/no]: ");
-                option = scanner.nextLine();
             } catch (RuntimeException ex) {
                 System.out.println("!!!" + ex.getMessage());
             }
+            System.out.println("Хотите продолжить вычисления? [yes/no]: ");
+            option = scanner.nextLine();
         } while(!"no".equals(option));
         System.out.println("Калькулятор выключается!");
     }
 
     private static void printResult(double result) {
         DecimalFormat df = new DecimalFormat("0.000"); // 3 знака после запятой 
-        System.out.print("Результат : ");
+        System.out.print("Результат : " + Calculator.getNum1() + " " + Calculator.getSign() + " " 
+                + Calculator.getNum2() + " = ");
         System.out.println(result % 1 == 0 ? (int) result : df.format(result));
     }
 }
