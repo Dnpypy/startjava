@@ -14,20 +14,17 @@ public class GuessNumberTest {
         System.out.println("Введите имя второго игрока: ");
         String name2 = scanner.nextLine();
         Player player2 = new Player(name2);
-
         GuessNumber game = new GuessNumber(player1, player2);
 
         // запуск игры
         String option = "yes";
-        while(!option.equals("no")) {
-            // игровой процесс
-            game.play();
-
-            // ввод и обработка ответа игрока о продолжении/завершении
-            do {
-                System.out.println("Хотите продолжить игру? [yes/no]: ");
-                option = scanner.nextLine();
-            } while(!option.equals("yes") && !option.equals("no"));
-        }
+        do {
+            if ("yes".equals(option)) {
+                //System.out.println("Игра началась! У каждого игрока по + " + Player.attempt + " + попыток.");
+                game.play(); // игровой процесс
+            }
+            System.out.println("Хотите продолжить игру? [yes/no]: ");
+            option = scanner.nextLine();
+        } while(!"no".equals(option));
     }
 }

@@ -7,7 +7,7 @@ public class GuessNumber {
 
     private Player player1;
     private Player player2;
-
+    
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
@@ -16,14 +16,15 @@ public class GuessNumber {
     public void play() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
-        var min = 1;
-        var max = 100;
-        var diff = max - min;
-        var secretNum = random.nextInt(diff + 1) + min;
-
+        int min = 1;
+        int max = 100;
+        int diff = max - min;
+        int secretNum = random.nextInt(diff + 1) + min;
         while (true) {
             System.out.println("Введите число первого игрока: ");
-            var playerNum1 = Integer.parseInt(scanner.nextLine());
+            int playerNum1 = Integer.parseInt(scanner.nextLine());
+            player1.add(playerNum1);
+            player1.size();
             if (playerNum1 == secretNum) {
                 System.out.println("Игрок 1 отгадал число! " + "число : " + playerNum1);
                 break;
