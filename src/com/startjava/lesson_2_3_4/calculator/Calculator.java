@@ -8,18 +8,6 @@ public class Calculator {
     private static int num2;
     private static char sign;
 
-    public static int getNum1() {
-        return num1;
-    }
-
-    public static int getNum2() {
-        return num2;
-    }
-
-    public static char getSign() {
-        return sign;
-    }
-
     public static double calculate(String expression) {
         initial(expression);
         return switch (sign) {
@@ -31,7 +19,7 @@ public class Calculator {
             case '%' -> num1 % num2;
             default -> throw new RuntimeException("Введённая математическая операция не поддерживается");
         };
-        }
+    }
 
     private static void initial(String expression) {
         String[] partsExpression = expression.split(" ");

@@ -9,15 +9,15 @@ public class CalculatorTest {
         String option = "yes";
         System.out.println("Старт калькулятора!");
         do {
-            try {
-                if ("yes".equals(option)) {
-                    System.out.println("Введите математическое выражение, пример : 2 ^ 10");
-                    String expression = scanner.nextLine();// введенное мат.выражение
+            if ("yes".equals(option)) {
+                System.out.println("Введите математическое выражение, пример : 2 ^ 10");
+                String expression = scanner.nextLine();// введенное мат.выражение
+                try {
                     double result = Calculator.calculate(expression);
-                    printResult(result);
+                    printResult(result, expression);
+                } catch (RuntimeException ex) {
+                    System.out.println("!!!" + ex.getMessage());
                 }
-            } catch (RuntimeException ex) {
-                System.out.println("!!!" + ex.getMessage());
             }
             System.out.println("Хотите продолжить вычисления? [yes/no]: ");
             option = scanner.nextLine();
@@ -25,10 +25,9 @@ public class CalculatorTest {
         System.out.println("Калькулятор выключается!");
     }
 
-    private static void printResult(double result) {
+    private static void printResult(double result, String expression) {
         DecimalFormat df = new DecimalFormat("0.000"); // 3 знака после запятой 
-        System.out.print("Результат : " + Calculator.getNum1() + " " + Calculator.getSign() + " " 
-                + Calculator.getNum2() + " = ");
+        System.out.print(expression + " = ");
         System.out.println(result % 1 == 0 ? (int) result : df.format(result));
     }
 }
