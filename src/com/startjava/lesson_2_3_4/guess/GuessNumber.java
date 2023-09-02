@@ -11,9 +11,9 @@ public class GuessNumber {
     private int secretNum;
     private int gameOver;
 
-    public GuessNumber(Player player1, Player player2) {
-        this.player1 = player1;
-        this.player2 = player2;
+    public GuessNumber(String name1, String name2) {
+        this.player1 = new Player(name1);
+        this.player2 = new Player(name2);
     }
     
     public void play() {
@@ -56,7 +56,7 @@ public class GuessNumber {
         }
     }
 
-    // набросок метода
+    // ходы игроков
     private void playerMove(int playerNum, Player player) {
         int temp = 0;
         player.add(playerNum);
@@ -65,11 +65,9 @@ public class GuessNumber {
         if (playerNum == secretNum) {
             System.out.println(infoName(player) + " отгадал число : " + playerNum + " c " + 
                 player.getAttempt() + " попытки\n");
-            finishAttempts(player.elementsArray(), player.getAttempt());
+            finishAttempts(player.copyingNums(), player.getAttempt());
             gameOver = 1;
-            player.zeroAttempt();
             player.fillArray();
-            
         } 
         if (playerNum < secretNum) {
             System.out.println(playerNum + " число меньше того, что загадал компьютер");
@@ -78,12 +76,10 @@ public class GuessNumber {
         }  
         if (player.getAttempt() == 10) { 
             System.out.println("У " + infoName(player) + " закончились попытки\n");
-            finishAttempts(player.elementsArray(), player.getAttempt());
+            finishAttempts(player.copyingNums(), player.getAttempt());
             gameOver = 1;
-            player.zeroAttempt();
             player.fillArray();
         }
-
     }
 
     private String infoName(Player player) {
