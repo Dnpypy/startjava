@@ -61,11 +61,11 @@ public class GuessNumber {
         int temp = 0;
         player.add(playerNum);
         temp += 1;
-        player.setAttempt1(temp);
+        player.setAttempt(temp);
         if (playerNum == secretNum) {
-            System.out.println(infoName1() + " отгадал число : " + playerNum + " c " + 
-                player.getAttempt1() + " попытки\n");
-            finishAttempts(player.elementsArray(), player.getAttempt1());
+            System.out.println(infoName() + " отгадал число : " + playerNum + " c " + 
+                player.getAttempt() + " попытки\n");
+            finishAttempts(player.elementsArray(), player.getAttempt());
             gameOver = 1;
         } 
         if (playerNum < secretNum) {
@@ -73,20 +73,16 @@ public class GuessNumber {
         } else if (playerNum > secretNum) {
             System.out.println(playerNum + " число больше того, что загадал компьютер");
         }  
-        if (player.getAttempt1() == 10) { 
-            System.out.println("У " + infoName1() + " закончились попытки\n");
-            finishAttempts(player.elementsArray(), player.getAttempt1());
+        if (player.getAttempt() == 10) { 
+            System.out.println("У " + infoName() + " закончились попытки\n");
+            finishAttempts(player.elementsArray(), player.getAttempt());
             gameOver = 1;
         }
 
     }
 
-    private String infoName1() {
-        return player1.getName1();
-    }
-
-    private String infoName2() {
-        return player2.getName2();
+    private String infoName() {
+        return player1.getName();
     }
 
     private void finishAttempts(int[] array, int num) {
