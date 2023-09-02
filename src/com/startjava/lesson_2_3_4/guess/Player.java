@@ -7,20 +7,19 @@ public class Player {
     private String name;
     private int[] nums;
     private int count;
-    private int attempt1; // тут хранятся попытки игрока 1
-    private int attempt2; // тут хранятся попытки игрока 2
-   
+    private int attempt; // тут хранятся попытки игроков
+    
     public Player(String name) {
         this.name = name;
         nums = new int[10];
     }
 
-    public void setAttempt(int attempt1) {
-        this.attempt1 += attempt1;
+    public void setAttempt(int attempt) {
+        this.attempt += attempt;
     }
 
     public int getAttempt() {
-        return attempt1;
+        return attempt;
     }
 
     public void setAttempts(int[] num) {
@@ -38,5 +37,9 @@ public class Player {
     public int[] elementsArray() {
         int[] newNums = Arrays.copyOf(nums, nums.length);
         return newNums;
+    }
+
+    public void fillArray() {
+        Arrays.fill(nums, attempt, nums.length, 0);
     }
 }
