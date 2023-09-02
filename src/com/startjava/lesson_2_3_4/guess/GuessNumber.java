@@ -67,7 +67,7 @@ public class GuessNumber {
                 player.getAttempt() + " попытки\n");
             finishAttempts(player.copyingNums(), player.getAttempt());
             gameOver = 1;
-            player.fillArray();
+            player.fillNums();
         } 
         if (playerNum < secretNum) {
             System.out.println(playerNum + " число меньше того, что загадал компьютер");
@@ -78,7 +78,7 @@ public class GuessNumber {
             System.out.println("У " + infoName(player) + " закончились попытки\n");
             finishAttempts(player.copyingNums(), player.getAttempt());
             gameOver = 1;
-            player.fillArray();
+            player.fillNums();
         }
     }
 

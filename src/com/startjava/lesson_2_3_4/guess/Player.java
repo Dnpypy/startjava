@@ -38,7 +38,7 @@ public class Player {
         return Arrays.copyOf(nums, nums.length);
     }
 
-    public void fillArray() {
+    public void fillNums() {
         this.attempt = 0;
         Arrays.fill(nums, 0, attempt, 0);
     }
