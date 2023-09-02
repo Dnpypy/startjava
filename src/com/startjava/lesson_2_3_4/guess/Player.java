@@ -18,6 +18,10 @@ public class Player {
         this.attempt += attempt;
     }
 
+    public void zeroAttempt() {
+        this.attempt = 0;
+    }
+
     public int getAttempt() {
         return attempt;
     }
@@ -40,6 +44,6 @@ public class Player {
     }
 
     public void fillArray() {
-        Arrays.fill(nums, attempt, nums.length, 0);
+        Arrays.fill(nums, 0, attempt, 0);
     }
 }
