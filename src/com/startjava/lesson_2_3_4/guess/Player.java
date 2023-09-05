@@ -14,7 +14,7 @@ public class Player {
     private int attempt; 
     
     public Player(String name) {
-        name = name;
+        this.name = name;
         nums = new int[10];
     }
 
@@ -31,8 +31,6 @@ public class Player {
     }
 
     public void add(int num) {
-        System.out.println(" count: " + count);
-        System.out.println(" attempt: " + attempt);
         nums[count++] = num;
     }
 
@@ -41,7 +39,7 @@ public class Player {
     }
 
     public void clear() {
-        attempt = 0;
         Arrays.fill(nums, 0, attempt, 0);
+        attempt = 0;
     }
 }
