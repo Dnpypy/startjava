@@ -41,5 +41,6 @@ public class Player {
     public void clear() {
         Arrays.fill(nums, 0, attempt, 0);
         attempt = 0;
+        count = 0;
     }
 }

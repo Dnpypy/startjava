@@ -69,7 +69,7 @@ public class GuessNumber {
         if (playerNum == secretNum) {
             System.out.println(player.getName() + " отгадал число : " + playerNum + " c " + 
                 player.getAttempt() + " попытки\n");
-            printNums(player.getNums(), player.getAttempt(), player);
+            printNums(player.getNums(), player);
             gameOver = 1;
         } 
         if (playerNum < secretNum) {
@@ -79,12 +79,12 @@ public class GuessNumber {
         }  
         if (player.getAttempt() == 10) { 
             System.out.println("У " + player.getName() + " закончились попытки\n");
-            printNums(player.getNums(), player.getAttempt(), player);
+            printNums(player.getNums(), player);
             gameOver = 1;
         }
     }
 
-    private void printNums(int[] array, int num, Player player) {
+    private void printNums(int[] array, Player player) {
         for (Integer n : array) {
             System.out.print(n == 4 ? n + "\n" : n + " ");
         }
