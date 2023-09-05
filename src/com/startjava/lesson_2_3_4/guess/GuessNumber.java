@@ -12,39 +12,28 @@ public class GuessNumber {
     private int gameOver;
 
     public GuessNumber(String name1, String name2) {
-        this.player1 = new Player(name1);
-        this.player2 = new Player(name2);
+        player1 = new Player(name1);
+        player2 = new Player(name2);
     }
     
     public void play() {
-        
-        secretNum = randomUtil();
+        secretNum = randomNums();
 
         int allAttempt = 10; // всего попыток
-        Scanner scanner = new Scanner(System.in);
+        
         System.out.println("Игра началась! У каждого игрока по " + allAttempt + " попыток.");
         int playerMove = 1;
         gameOver = 0;
         while (true) {
             try {
                 System.out.println("Введите число первого игрока: ");
-                int playerNum = Integer.parseInt(scanner.nextLine());
-                if (playerMove % 2 != 0) { // нечет то ходит перв игрок
-                    playerMove(playerNum, player1);
-                } else if (playerMove % 2 == 0) {
-                    playerMove(playerNum, player2);
-                }
+                inputNumsPlayers(player1);
                 if (gameOver == 1) {
                     break;
                 } 
                 playerMove++;
                 System.out.println("Введите число второго игрока: ");
-                playerNum = Integer.parseInt(scanner.nextLine());
-                if (playerMove % 2 != 0) { // нечет то ходит перв игрок
-                    playerMove(playerNum, player1);
-                } else if (playerMove % 2 == 0) {
-                    playerMove(playerNum, player2);
-                }
+                inputNumsPlayers(player2);
                 if (gameOver == 1) {
                     break;
                 }
@@ -56,6 +45,21 @@ public class GuessNumber {
         }
     }
 
+    private int randomNums() {
+        Random random = new Random();
+        int min = 1;
+        int max = 100;
+        int diff = max - min;
+        int num = random.nextInt(diff + 1) + min;
+        return num;
+    }
+
+    private void inputNumsPlayers(Player player) {
+        Scanner scanner = new Scanner(System.in);
+        int playerNum = Integer.parseInt(scanner.nextLine());
+        playerMove(playerNum, player);
+    }
+
     // ходы игроков
     private void playerMove(int playerNum, Player player) {
         int temp = 0;
@@ -63,42 +67,27 @@ public class GuessNumber {
         temp += 1;
         player.setAttempt(temp);
         if (playerNum == secretNum) {
-            System.out.println(infoName(player) + " отгадал число : " + playerNum + " c " + 
+            System.out.println(player.getName() + " отгадал число : " + playerNum + " c " + 
                 player.getAttempt() + " попытки\n");
-            finishAttempts(player.copyingNums(), player.getAttempt());
+            printNums(player.getNums(), player.getAttempt(), player);
             gameOver = 1;
-            player.fillNums();
         } 
         if (playerNum < secretNum) {
-            System.out.println(playerNum + " число меньше того, что загадал компьютер");
+            System.out.println(playerNum + " число меньше того, что загадал компьютер\n");
         } else if (playerNum > secretNum) {
-            System.out.println(playerNum + " число больше того, что загадал компьютер");
+            System.out.println(playerNum + " число больше того, что загадал компьютер\n");
         }  
         if (player.getAttempt() == 10) { 
-            System.out.println("У " + infoName(player) + " закончились попытки\n");
-            finishAttempts(player.copyingNums(), player.getAttempt());
+            System.out.println("У " + player.getName() + " закончились попытки\n");
+            printNums(player.getNums(), player.getAttempt(), player);
             gameOver = 1;
-            player.fillNums();
         }
     }
 
-    private String infoName(Player player) {
-        return player.getName();
-    }
-
-    private void finishAttempts(int[] array, int num) {
-        int[] outputArray = Arrays.copyOf(array, num);
-        for (int i = 0; i < outputArray.length; i++) {
-            System.out.print(i == 4 ? outputArray[i] + "\n" : outputArray[i] + " ");
+    private void printNums(int[] array, int num, Player player) {
+        for (Integer n : array) {
+            System.out.print(n == 4 ? n + "\n" : n + " ");
         }
-    }
-
-    private int randomUtil() {
-        Random random = new Random();
-        int min = 1;
-        int max = 100;
-        int diff = max - min;
-        int num = random.nextInt(diff + 1) + min;
-        return num;
+        player.clear();
     }
 }

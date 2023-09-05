@@ -14,7 +14,7 @@ public class Player {
     private int attempt; 
     
     public Player(String name) {
-        this.name = name;
+        name = name;
         nums = new int[10];
     }
 
@@ -31,15 +31,17 @@ public class Player {
     }
 
     public void add(int num) {
+        System.out.println(" count: " + count);
+        System.out.println(" attempt: " + attempt);
         nums[count++] = num;
     }
 
-    public int[] copyingNums() {
-        return Arrays.copyOf(nums, nums.length);
+    public int[] getNums() {
+        return Arrays.copyOf(nums, attempt);
     }
 
-    public void fillNums() {
-        this.attempt = 0;
+    public void clear() {
+        attempt = 0;
         Arrays.fill(nums, 0, attempt, 0);
     }
 }
