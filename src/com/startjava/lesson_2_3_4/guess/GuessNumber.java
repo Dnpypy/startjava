@@ -9,7 +9,6 @@ public class GuessNumber {
     private Player player1;
     private Player player2;
     private int secretNum;
-    private int gameOver;
 
     public GuessNumber(String name1, String name2) {
         player1 = new Player(name1);
@@ -18,20 +17,21 @@ public class GuessNumber {
     
     public void play() {
         Scanner scanner = new Scanner(System.in);
-        secretNum = randomNumsGenerating();
+        secretNum = randomNumsGenerate();
         int allAttempt = 10; // всего попыток
         
         System.out.println("Игра началась! У каждого игрока по " + allAttempt + " попыток.");
         while (true) {
             try {
                 System.out.println("\nВведите число первого игрока: ");
-                if (isGuessed(inputNum(scanner, player1), player1) == false) {
-                    player1.clear();
+                if (!(isGuessed(inputNum(scanner, player1), player1))) {
                     break;
                 }
                 System.out.println("\nВведите число второго игрока: ");
-                if (isGuessed(inputNum(scanner, player2), player2) == false) {
-                    player2.clear();
+                if (!(isGuessed(inputNum(scanner, player2), player2))) {
+                    printNums(player2);
+                    System.out.println();
+                    printNums(player1);
                     break;
                 }
             } catch (NumberFormatException ex) {
@@ -40,7 +40,7 @@ public class GuessNumber {
         }
     }
 
-    private int randomNumsGenerating() {
+    private int randomNumsGenerate() {
         Random random = new Random();
         return random.nextInt(100) + 1;
     }
@@ -56,7 +56,11 @@ public class GuessNumber {
         if (playerNum == secretNum) {
             System.out.println(player.getName() + " отгадал число : " + playerNum + " c " + 
                 player.getAttempt() + " попытки\n");
-            printNums(player);
+            printNums(player1);
+            System.out.println();
+            printNums(player2);
+            player1.clear();
+            player2.clear();
             return false;
         } 
         if (playerNum < secretNum) {
@@ -66,15 +70,19 @@ public class GuessNumber {
         }  
         if (player.getAttempt() == 10) { 
             System.out.println("У " + player.getName() + " закончились попытки\n");
-            printNums(player);
+            printNums(player1);
+            System.out.println();
+            printNums(player2);
+            player1.clear();
+            player2.clear();
             return false;
         }
         return true;
     }
 
     private void printNums(Player player) {
-        for (Integer n : player.getNums()) {
-            System.out.print(n == (player.getNums().length / 2) ? n + "\n" : n + " ");
+        for (int n : player.getNums()) {
+            System.out.print(n + " ");
         }
     }
 }

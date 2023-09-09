@@ -33,6 +33,6 @@ public class Player {
 
     public void clear() {
         attempt = 0;
-        Arrays.fill(nums, 0, attempt, 0);
+        Arrays.fill(nums, attempt, nums.length, 0);
     }
 }
