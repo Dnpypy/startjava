@@ -17,60 +17,47 @@ public class GuessNumber {
     }
     
     public void play() {
-        secretNum = randomNums();
-
+        Scanner scanner = new Scanner(System.in);
+        secretNum = randomNumsGenerating();
         int allAttempt = 10; // всего попыток
         
         System.out.println("Игра началась! У каждого игрока по " + allAttempt + " попыток.");
-        int playerMove = 1;
-        gameOver = 0;
         while (true) {
             try {
-                System.out.println("Введите число первого игрока: ");
-                inputNumsPlayers(player1);
-                if (gameOver == 1) {
-                    break;
-                } 
-                playerMove++;
-                System.out.println("Введите число второго игрока: ");
-                inputNumsPlayers(player2);
-                if (gameOver == 1) {
+                System.out.println("\nВведите число первого игрока: ");
+                if (isGuessed(inputNum(scanner, player1), player1) == false) {
+                    player1.clear();
                     break;
                 }
-                playerMove++;
-
+                System.out.println("\nВведите число второго игрока: ");
+                if (isGuessed(inputNum(scanner, player2), player2) == false) {
+                    player2.clear();
+                    break;
+                }
             } catch (NumberFormatException ex) {
                     System.out.println("Введите число!");
             }
         }
     }
 
-    private int randomNums() {
+    private int randomNumsGenerating() {
         Random random = new Random();
-        int min = 1;
-        int max = 100;
-        int diff = max - min;
-        int num = random.nextInt(diff + 1) + min;
-        return num;
+        return random.nextInt(100) + 1;
     }
 
-    private void inputNumsPlayers(Player player) {
-        Scanner scanner = new Scanner(System.in);
+    private int inputNum(Scanner scanner, Player player) {
         int playerNum = Integer.parseInt(scanner.nextLine());
-        playerMove(playerNum, player);
+        player.add(playerNum);
+        return playerNum;
     }
 
     // ходы игроков
-    private void playerMove(int playerNum, Player player) {
-        int temp = 0;
-        player.add(playerNum);
-        temp += 1;
-        player.setAttempt(temp);
+    private boolean isGuessed(int playerNum, Player player) {
         if (playerNum == secretNum) {
             System.out.println(player.getName() + " отгадал число : " + playerNum + " c " + 
                 player.getAttempt() + " попытки\n");
-            printNums(player.getNums(), player);
-            gameOver = 1;
+            printNums(player);
+            return false;
         } 
         if (playerNum < secretNum) {
             System.out.println(playerNum + " число меньше того, что загадал компьютер\n");
@@ -79,15 +66,15 @@ public class GuessNumber {
         }  
         if (player.getAttempt() == 10) { 
             System.out.println("У " + player.getName() + " закончились попытки\n");
-            printNums(player.getNums(), player);
-            gameOver = 1;
+            printNums(player);
+            return false;
         }
+        return true;
     }
 
-    private void printNums(int[] array, Player player) {
-        for (Integer n : array) {
-            System.out.print(n == 4 ? n + "\n" : n + " ");
+    private void printNums(Player player) {
+        for (Integer n : player.getNums()) {
+            System.out.print(n == (player.getNums().length / 2) ? n + "\n" : n + " ");
         }
-        player.clear();
     }
 }

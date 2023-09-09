@@ -7,9 +7,6 @@ public class Player {
     private String name;
     private int[] nums;
 
-    // счетчик для индекса массива nums
-    private int count;
-
     // попытки игроков
     private int attempt; 
     
@@ -22,16 +19,12 @@ public class Player {
         return name;
     }
 
-    public void setAttempt(int attempt) {
-        this.attempt += attempt;
-    }
-
     public int getAttempt() {
         return attempt;
     }
 
     public void add(int num) {
-        nums[count++] = num;
+        nums[attempt++] = num;
     }
 
     public int[] getNums() {
@@ -39,8 +32,7 @@ public class Player {
     }
 
     public void clear() {
-        Arrays.fill(nums, 0, attempt, 0);
         attempt = 0;
-        count = 0;
+        Arrays.fill(nums, 0, attempt, 0);
     }
 }
