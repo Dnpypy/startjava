@@ -32,7 +32,7 @@ public class Player {
     }
 
     public void clear() {
+        Arrays.fill(nums, 0, attempt, 0);
         attempt = 0;
-        Arrays.fill(nums, attempt, nums.length, 0);
     }
 }
