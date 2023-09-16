@@ -13,8 +13,11 @@ public class GuessNumberTest {
         
         System.out.println("Введите имя второго игрока: ");
         String name2 = scanner.nextLine();
+
+        System.out.println("Введите имя третьего игрока: ");
+        String name3 = scanner.nextLine();
         
-        GuessNumber game = new GuessNumber(name1, name2);
+        GuessNumber game = new GuessNumber(name1, name2, name3);
 
         // запуск игры
         String option = "yes";

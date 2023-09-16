@@ -23,8 +23,14 @@ public class Player {
         return attempt;
     }
 
-    public void add(int num) {
-        nums[attempt++] = num;
+    public boolean add(int num) {
+        if (num > 0 && num <= 100) {
+            nums[attempt++] = num;
+            return true;
+        } else {
+            System.out.println("Введите число в диапазоне чисел от 0 до 100!");
+            return false;
+        }
     }
 
     public int[] getNums() {
