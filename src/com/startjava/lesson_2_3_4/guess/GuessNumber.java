@@ -6,9 +6,6 @@ import java.util.Arrays;
 
 public class GuessNumber {
 
-    //private Player player1;
-    //private Player player2;
-    //private Player player3;
     private Player[] players;
     private int secretNum;
 
@@ -46,7 +43,14 @@ public class GuessNumber {
             }
         }
         printNums(players);
+        clearNums(players);
         }
+
+    private void clearNums(Player[] players) {
+        for (int i = 0; i < players.length - 1; i++) {
+            players[i].clear();
+        }
+    }
 
     private int checkAttempt(Player[] players) {
         int count = 0;
@@ -71,7 +75,6 @@ public class GuessNumber {
                 break;
             }
         }
-        
         return playerNum;
     }
 
@@ -93,22 +96,15 @@ public class GuessNumber {
         return false;
     }
 
-    // private void printNums(Player player) {
     private void printNums(Player[] players) {
         for (int i = 0; i < players.length - 1; i++) {
             System.out.print("Игрок " + players[i].getName() + " назвал числа: " );
             System.out.println();
             for (int n : players[i].getNums()) {
+                System.out.println("Длина массива : " + players.length);
                 System.out.print(n + " ");
             }
             System.out.println();
-            players[i].clear();
         }    
-        // System.out.print("Игрок " + player.getName() + " назвал числа: " );
-        // System.out.println();
-        // for (int n : player.getNums()) {
-        //     System.out.print(n + " ");
-        // }
-        // System.out.println();
     }
 }
