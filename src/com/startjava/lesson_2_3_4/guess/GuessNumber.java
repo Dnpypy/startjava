@@ -3,14 +3,20 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Scanner;
 import java.util.Random;
 import java.util.Arrays;
+import java.lang.Math;
 
 public class GuessNumber {
 
     private Player[] players;
     private int secretNum;
 
-    public GuessNumber(String name1, String name2, String name3) {
-        players =  new Player[] {new Player(name1), new Player(name1), new Player(name1)};
+    public GuessNumber(String ... names) {
+        for (int i = 0; i < players.length; i++) {
+            players[i] = new Player(names);
+        }
+        
+        // перетасовка массива(жребий игроков)
+        players = shuffle(players);
     }
     
     public void play() {
@@ -21,16 +27,9 @@ public class GuessNumber {
         System.out.println("Игра началась! У каждого игрока по " + allAttempt + " попыток.");
         while (true) {
             try {
-                System.out.println("\nВведите число первого игрока: ");
-                if (isGuessed(inputNum(scanner, players[0]), players[0])) {
-                    break;
-                }
-                System.out.println("\nВведите число второго игрока: ");
-                if (isGuessed(inputNum(scanner, players[1]), players[1])) {
-                    break;
-                }
-                System.out.println("\nВведите число третьего игрока: ");
-                if (isGuessed(inputNum(scanner, players[2]), players[2])) {
+                if (inputNumsPlayers(scanner, "\nВведите число первого игрока: ") ||
+                    inputNumsPlayers(scanner, "\nВведите число второго игрока: ") ||
+                    inputNumsPlayers(scanner, "\nВведите число третьего игрока: ")) {
                     break;
                 }
                 if (checkAttempt(players) == 3) {
@@ -44,22 +43,17 @@ public class GuessNumber {
         }
         printNums(players);
         clearNums(players);
-        }
-
-    private void clearNums(Player[] players) {
-        for (int i = 0; i < players.length - 1; i++) {
-            players[i].clear();
-        }
     }
 
-    private int checkAttempt(Player[] players) {
-        int count = 0;
-        for (int i = 0; i < players.length - 1; i++) {
-            if (players[i].getAttempt() == 10) {
-                count++;
-            }
+    private Player[] shuffle(Player[] players) {
+        Random random = new Random();
+        for(int i = 0; i < players.length - 1; i++) {
+            int index = (int) Math.random() * 3;
+            Player temp = players[i];
+            players[i] = players[index];
+            players[index] = temp;
         }
-        return count;
+        return players;
     }
 
     private int generateSecretNumber() {
@@ -67,15 +61,13 @@ public class GuessNumber {
         return random.nextInt(100) + 1;
     }
 
-    private int inputNum(Scanner scanner, Player player) {
-        int playerNum = 0;
-        while (true) {
-            playerNum = Integer.parseInt(scanner.nextLine());
-            if(player.add(playerNum)) {
-                break;
+    private boolean inputNumsPlayers(Scanner scanner, String str) {
+        for (Player player : players) {
+            if (isGuessed(inputNum(scanner, player), player)) {
+                return true;
             }
         }
-        return playerNum;
+        return false;
     }
 
     // ходы игроков
@@ -96,15 +88,40 @@ public class GuessNumber {
         return false;
     }
 
+    private int inputNum(Scanner scanner, Player player) {
+        int playerNum = 0;
+        while (true) {
+            playerNum = Integer.parseInt(scanner.nextLine());
+            if (player.add(playerNum)) {
+                break;
+            }
+        }
+        return playerNum;
+    }
+
+    private int checkAttempt(Player[] players) {
+        int count = 0;
+        for (int i = 0; i < players.length; i++) {
+            if (players[i].getAttempt() == 10) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     private void printNums(Player[] players) {
-        for (int i = 0; i < players.length - 1; i++) {
+        for (int i = 0; i < players.length; i++) {
             System.out.print("Игрок " + players[i].getName() + " назвал числа: " );
-            System.out.println();
             for (int n : players[i].getNums()) {
-                System.out.println("Длина массива : " + players.length);
                 System.out.print(n + " ");
             }
             System.out.println();
         }    
+    }
+
+    private void clearNums(Player[] players) {
+        for (int i = 0; i < players.length; i++) {
+            players[i].clear();
+        }
     }
 }

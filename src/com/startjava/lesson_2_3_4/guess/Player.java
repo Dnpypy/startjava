@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Player {
 
-    private String name;
+    private final String name;
     private int[] nums;
 
     // попытки игроков
@@ -19,6 +19,10 @@ public class Player {
         return name;
     }
 
+    public int[] getNums() {
+        return Arrays.copyOf(nums, attempt);
+    }
+
     public int getAttempt() {
         return attempt;
     }
@@ -27,14 +31,9 @@ public class Player {
         if (num > 0 && num <= 100) {
             nums[attempt++] = num;
             return true;
-        } else {
-            System.out.println("Введите число в диапазоне чисел от 0 до 100!");
-            return false;
-        }
-    }
-
-    public int[] getNums() {
-        return Arrays.copyOf(nums, attempt);
+        } 
+        System.out.println("Введите число в диапазоне чисел от 0 до 100!");
+        return false;
     }
 
     public void clear() {
