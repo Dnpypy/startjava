@@ -11,10 +11,8 @@ public class GuessNumber {
     private Player[] players;
     private int secretNum;
 
-    public GuessNumber(String ... names) {
-        for (int i = 0; i < players.length; i++) {
-            players[i] = new Player[](names);
-        }
+    public GuessNumber(String name1, String name2, String name3) {
+        players =  new Player[] {new Player(name1), new Player(name2), new Player(name3)};
         
         // перетасовка массива(жребий игроков)
         players = shuffle(players);
