@@ -7,12 +7,13 @@ import java.lang.Math;
 
 public class GuessNumber {
 
+    private static final int ROUNDS = 3;
     private Player[] players;
     private int secretNum;
 
     public GuessNumber(String ... names) {
         for (int i = 0; i < players.length; i++) {
-            players[i] = new Player(names);
+            players[i] = new Player[](names);
         }
         
         // перетасовка массива(жребий игроков)
@@ -20,29 +21,23 @@ public class GuessNumber {
     }
     
     public void play() {
-        Scanner scanner = new Scanner(System.in);
-        secretNum = generateSecretNumber();
-        int allAttempt = 10; // всего попыток
-        
-        System.out.println("Игра началась! У каждого игрока по " + allAttempt + " попыток.");
-        while (true) {
-            try {
-                if (inputNumsPlayers(scanner, "\nВведите число первого игрока: ") ||
-                    inputNumsPlayers(scanner, "\nВведите число второго игрока: ") ||
-                    inputNumsPlayers(scanner, "\nВведите число третьего игрока: ")) {
-                    break;
+        for (int i = 0; i < ROUNDS; i++) {
+            Scanner scanner = new Scanner(System.in);
+            secretNum = generateSecretNumber();
+            int allAttempt = 10; // всего попыток
+            System.out.println("Игра началась! У каждого игрока по " + allAttempt + " попыток.");
+            while (true) {
+                try {
+                    if (inputNumsPlayers(scanner)) {
+                        break;
+                    }
+                } catch (NumberFormatException ex) {
+                    System.out.println("Введите число!");
                 }
-                if (checkAttempt(players) == 3) {
-                    System.out.println("У игроков закончились попытки");
-                    break;
-                }
-
-            } catch (NumberFormatException ex) {
-                System.out.println("Введите число!");
+                printNums(players);
+                clearNums(players);
             }
         }
-        printNums(players);
-        clearNums(players);
     }
 
     private Player[] shuffle(Player[] players) {
@@ -61,9 +56,25 @@ public class GuessNumber {
         return random.nextInt(100) + 1;
     }
 
-    private boolean inputNumsPlayers(Scanner scanner, String str) {
-        for (Player player : players) {
-            if (isGuessed(inputNum(scanner, player), player)) {
+    private boolean inputNumsPlayers(Scanner scanner) {
+        String str1 = "первого";
+        String str2 = "второго";
+        String str3 = "третьего";
+        for (int j = 0; j < players.length; j++) {
+            if (j == 0) {
+                System.out.println("\nВведите число " + str1 + " игрока: ");
+            }
+            if (j == 1) {
+                System.out.println("\nВведите число " + str2 + " игрока: ");
+            }
+            if (j == 2) {
+                System.out.println("\nВведите число " + str3 + " игрока: ");
+            }
+            if (isGuessed(inputNum(scanner, players[j]), players[j])) {
+                return true;
+            }
+            if (checkAttempt(players) == 3) {
+                System.out.println("У игроков закончились попытки");
                 return true;
             }
         }
