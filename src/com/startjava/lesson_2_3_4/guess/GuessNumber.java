@@ -7,23 +7,24 @@ import java.lang.Math;
 
 public class GuessNumber {
 
-    private static final int ROUNDS = 3;
+    private static final int ROUNDS = 3;    // раунды игроков
+    private static final int ATTEMPTS = 10; // всего попыток
+    private static final int ALL_ATTEMPTS_PLAYERS = 3; // попытки всех игроков
     private Player[] players;
     private int secretNum;
 
-    public GuessNumber(String name1, String name2, String name3) {
-        players =  new Player[] {new Player(name1), new Player(name2), new Player(name3)};
+    public GuessNumber(Player... players) {
+        this.players = players;
         
         // перетасовка массива(жребий игроков)
         players = shuffle(players);
     }
     
     public void play() {
+        Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < ROUNDS; i++) {
-            Scanner scanner = new Scanner(System.in);
             secretNum = generateSecretNumber();
-            int allAttempt = 10; // всего попыток
-            System.out.println("Игра началась! У каждого игрока по " + allAttempt + " попыток.");
+            System.out.println("Игра началась! У каждого игрока по " + ATTEMPTS + " попыток.");
             while (true) {
                 try {
                     if (inputNumsPlayers(scanner)) {
@@ -71,7 +72,7 @@ public class GuessNumber {
             if (isGuessed(inputNum(scanner, players[j]), players[j])) {
                 return true;
             }
-            if (checkAttempt(players) == 3) {
+            if (checkAttempt(players) == ALL_ATTEMPTS_PLAYERS) {
                 System.out.println("У игроков закончились попытки");
                 return true;
             }
@@ -86,12 +87,11 @@ public class GuessNumber {
                 player.getAttempt() + " попытки\n");
             return true;
         } 
-        // тернарный оператор
-        String smallNums = playerNum + " число меньше того, что загадал компьютер\n";
-        String bigNums = playerNum + " число больше того, что загадал компьютер\n";
-        System.out.print((playerNum < secretNum) ? smallNums : bigNums);
+        String wordSmallLong = playerNum < secretNum ? "меньше" : "больше";
+        System.out.println(playerNum + " число + " + wordSmallLong + " того, что загадал компьютер\n");
+
         
-        if (player.getAttempt() == 10) { 
+        if (player.getAttempt() == ATTEMPTS) { 
             System.out.println("У " + player.getName() + " закончились попытки\n");
         }
         return false;
@@ -101,6 +101,7 @@ public class GuessNumber {
         int playerNum = 0;
         while (true) {
             playerNum = Integer.parseInt(scanner.nextLine());
+            System.out.println("Число : " + playerNum);
             if (player.add(playerNum)) {
                 break;
             }
@@ -110,8 +111,8 @@ public class GuessNumber {
 
     private int checkAttempt(Player[] players) {
         int count = 0;
-        for (int i = 0; i < players.length; i++) {
-            if (players[i].getAttempt() == 10) {
+        for (Player player : players) {
+            if (player.getAttempt() == ATTEMPTS) {
                 count++;
             }
         }
@@ -129,8 +130,8 @@ public class GuessNumber {
     }
 
     private void clearNums(Player[] players) {
-        for (int i = 0; i < players.length; i++) {
-            players[i].clear();
+        for (Player player : players) {
+            player.clear();
         }
     }
 }

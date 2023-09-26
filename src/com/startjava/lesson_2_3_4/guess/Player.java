@@ -23,10 +23,6 @@ public class Player {
         return Arrays.copyOf(nums, attempt);
     }
 
-    public int getAttempt() {
-        return attempt;
-    }
-
     public boolean add(int num) {
         if (num > 0 && num <= 100) {
             nums[attempt++] = num;
@@ -34,6 +30,10 @@ public class Player {
         } 
         System.out.println("Введите число в диапазоне чисел от 0 до 100!");
         return false;
+    }
+
+    public int getAttempt() {
+        return attempt;
     }
 
     public void clear() {
