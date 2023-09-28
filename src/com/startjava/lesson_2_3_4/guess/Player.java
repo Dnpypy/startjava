@@ -5,6 +5,9 @@ import java.util.Arrays;
 public class Player {
 
     private final String name;
+    private static final int ARRAY_LENGTH = 10;
+    private static final int ZERO_NUMS = 0;
+    private static final int ONE_HUNDRED = 100;
     private int[] nums;
 
     // попытки игроков
@@ -12,7 +15,7 @@ public class Player {
     
     public Player(String name) {
         this.name = name;
-        nums = new int[10];
+        nums = new int[ARRAY_LENGTH];
     }
 
     public String getName() {
@@ -24,7 +27,7 @@ public class Player {
     }
 
     public boolean add(int num) {
-        if (num > 0 && num <= 100) {
+        if (num > ZERO_NUMS && num <= ONE_HUNDRED) {
             nums[attempt++] = num;
             return true;
         } 

@@ -1,6 +1,7 @@
 package com.startjava.lesson_2_3_4.guess;
 
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class GuessNumberTest {
 
@@ -17,7 +18,9 @@ public class GuessNumberTest {
         String option = "yes";
         do {
             if ("yes".equals(option)) {
-                game.play(); // игровой процесс
+
+                // игровой процесс
+                game.play(); 
             }
             System.out.println("\nХотите продолжить игру? [yes/no]: ");
             option = scanner.nextLine();
@@ -27,13 +30,13 @@ public class GuessNumberTest {
     private static GuessNumber inputNames(Scanner scanner) {
         Player[] players = new Player[NUMBER_PLAYERS];
         
-        for (Player player : players) {
-            player = initPlayer(scanner);
+        for (int i = 0; i < players.length; i++) {
+            players[i] = createPlayer(scanner);
         }
         return new GuessNumber(players);
     }
 
-    private static Player initPlayer(Scanner scanner) {
+    private static Player createPlayer(Scanner scanner) {
         System.out.println("Введите имя игрока: ");
         return new Player(scanner.nextLine());
     }
