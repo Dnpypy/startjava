@@ -4,18 +4,21 @@ import java.util.Arrays;
 
 public class Player {
 
+    // размер массива с числами
+    private static final int CAPACITY = 10;
+    
+    private static final int STARTRANGE = 1;
+    private static final int ENDRANGE = 100;
+
     private final String name;
-    private static final int ARRAY_LENGTH = 10;
-    private static final int ZERO_NUMS = 0;
-    private static final int ONE_HUNDRED = 100;
     private int[] nums;
 
-    // попытки игроков
+    // попытки игроков, изначально равно 0!
     private int attempt; 
     
     public Player(String name) {
         this.name = name;
-        nums = new int[ARRAY_LENGTH];
+        nums = new int[CAPACITY];
     }
 
     public String getName() {
@@ -27,11 +30,10 @@ public class Player {
     }
 
     public boolean add(int num) {
-        if (num > ZERO_NUMS && num <= ONE_HUNDRED) {
+        if (num > STARTRANGE && num <= ENDRANGE) {
             nums[attempt++] = num;
             return true;
         } 
-        System.out.println("Введите число в диапазоне чисел от 0 до 100!");
         return false;
     }
 

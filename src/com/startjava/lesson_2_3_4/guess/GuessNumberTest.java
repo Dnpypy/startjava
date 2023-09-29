@@ -7,7 +7,7 @@ public class GuessNumberTest {
 
     private static final int NUMBER_PLAYERS = 3;
 
-    public static void  main(String[] args) {
+    public static void main(String[] args) {
         System.out.println("\nИгра Угадай число : ");
         Scanner scanner = new Scanner(System.in);
         
