@@ -18,7 +18,6 @@ public class GuessNumberTest {
         String option = "yes";
         do {
             if ("yes".equals(option)) {
-
                 // игровой процесс
                 game.play(); 
             }
